@@ -171,7 +171,12 @@ python tools/tts.py episodes/ep02-... --only 7   # redo one line
 - Each line is sent with the lines around it (`previous_text`/`next_text`), so the tone flows naturally from one line to the next.
 - Voice settings live in `tools/tts.py`: stability 0.45, similarity 0.8, style 0.25, speed 1.05. Lower the stability if it sounds flat. Raise it if the voice wobbles between lines.
 - `audio/lN.align.json` holds a timing for every character, which lets cards and captions land on exact words.
-- With no key set, it falls back to the free offline Piper voice (lower quality, fine for drafts).
+- With no key set, it uses **Kokoro**, a free offline voice that sounds natural. The default voice is `af_heart`. Set `KOKORO_VOICE=am_michael` for a male narrator. It needs a Python 3.12 environment with `pip install torch kokoro soundfile`. If Kokoro isn't installed either, it falls back to Piper (robotic, drafts only).
+- **Clean audio, done automatically by `tools/engine.py`:**
+  - each line gets a high-pass at 75 Hz, a de-esser and gentle compression, then is normalised to −18 LUFS
+  - the music sits on soft sine pads and dips under the voice
+  - sound effects are synthesised cleanly
+  - the final master is −14 LUFS with true peak at −1.5 dB, which is YouTube's standard
 
 ---
 
@@ -215,6 +220,14 @@ no shadows, no floor. Full body, <POSE>, facing <left/right>. <HERO or HOST frag
 ---
 
 ## 6. Step 4: Render
+
+> **New episodes use `tools/engine.py` + `episodes/<ep>/episode.py`** (see `ep04-tomorrows-news`).
+>
+> **What the engine provides:** shared building blocks for the camera, the cut-out characters, the on-screen counters, the host and card, a phone news screen (`news_phone`), a text-message screen (`message_phone`), stamps, floating text, a sound-effects library and clean audio mastering.
+>
+> **What the episode file holds:** only the shots, keyed to line numbers, plus the thumbnail. Run `python episodes/<ep>/episode.py`.
+>
+> The older `render.py` below is what ep01 used.
 
 `episodes/<ep>/render.py` is a frame-by-frame compositor: Python, Pillow and numpy, piped into ffmpeg.
 - **Timeline:** each line's start time comes from its audio length plus the `GAPS` list, so editing a line re-times everything after it automatically.
