@@ -145,7 +145,10 @@ def mix_audio(ep, total, voice, sfx, path):
     # ducking from a smoothed voice envelope
     env = np.abs(vtrack)
     k = int(0.25 * A.SR)
-    env = np.convolve(env, np.ones(k) / k, mode="same")
+    cs = np.concatenate([[0.0], np.cumsum(env, dtype=np.float64)])
+    lo = np.clip(np.arange(n) - k // 2, 0, n)
+    hi = np.clip(np.arange(n) + k // 2, 0, n)
+    env = ((cs[hi] - cs[lo]) / k).astype(np.float32)
     duck = 1.0 - 0.55 * np.clip(env / 0.05, 0, 1)
     mtrack = music * 0.20 * duck
     ftrack = np.zeros(n, dtype=np.float32)
