@@ -275,15 +275,28 @@ def build_audio():
 
 
 # ---------------------------------------------------------------- thumbnail
+THUMB_TEXT = [("IF YOU KNEW", "THE FUTURE...", "thumbnail.jpg"),
+              ("I CAN SEE", "THE FUTURE", "thumbnail_b.jpg"),
+              ("I SAW", "TOMORROW", "thumbnail_c.jpg")]
+
+
 def thumbnail():
+    for small, big, name in THUMB_TEXT:
+        _thumb(small, big, name)
+
+
+def _thumb(small, big, name):
     base = Image.open(p("img", "thumb_base.png")).convert("RGB").resize((1280, 720), Image.LANCZOS).convert("RGBA")
     ph = news_phone("TOMORROW · 6:00 PM", ["Local man in fatal crash"], 1, breaking=True, highlight="date")
     ph = ph.resize((round(PW * 0.44), round(PH * 0.44)), Image.LANCZOS).rotate(-8, Image.BICUBIC, expand=True)
     base.alpha_composite(ph, (900, 268))
     d = ImageDraw.Draw(base)
-    d.text((1255, 38), "IT'S ABOUT", font=font(76), fill=PAPER, anchor="ra", stroke_width=6, stroke_fill=(0, 0, 0))
-    d.text((1255, 112), "ME?!", font=font(120), fill=YELLOW, anchor="ra", stroke_width=7, stroke_fill=(0, 0, 0))
-    base.convert("RGB").save(p("thumbnail.jpg"), quality=92)
+    size = 120
+    while d.textlength(big, font=font(size)) > 600:
+        size -= 4
+    d.text((1255, 34), small, font=font(76), fill=PAPER, anchor="ra", stroke_width=6, stroke_fill=(0, 0, 0))
+    d.text((1255, 112), big, font=font(size), fill=YELLOW, anchor="ra", stroke_width=7, stroke_fill=(0, 0, 0))
+    base.convert("RGB").save(p(name), quality=92)
 
 
 if __name__ == "__main__":
