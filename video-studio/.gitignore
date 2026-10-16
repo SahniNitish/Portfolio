@@ -1,6 +1,6 @@
-# rendered videos are large; keep them out of git
+# rendered videos and regenerable intermediates; keep them out of git
 *.mp4
 mix.wav
-audio/clean/
-img/_*.jpg
+**/audio/clean/
+**/img/_*.jpg
 __pycache__/
