@@ -50,7 +50,7 @@ POSES = {
     "slump":   dict(torso=198, head=152, ua_r=22, fa_r=60, ua_l=12, fa_l=40, th_r=88, sh_r=6, th_l=84, sh_l=2),
     "phone":   dict(torso=188, head=142, ua_r=40, fa_r=140, ua_l=30, fa_l=130, th_r=88, sh_r=6, th_l=84, sh_l=2),
     "type":    dict(torso=172, head=170, ua_r=70, fa_r=95, ua_l=60, fa_l=92, th_r=90, sh_r=0, th_l=86, sh_l=-4),
-    "victory": dict(torso=180, head=188, ua_r=168, fa_r=176, ua_l=-30, fa_l=-10, th_r=12, sh_r=0, th_l=-12, sh_l=0),
+    "victory": dict(torso=180, head=186, ua_r=138, fa_r=162, ua_l=-30, fa_l=-10, th_r=12, sh_r=0, th_l=-12, sh_l=0),
     "point":   dict(torso=178, head=176, ua_r=88, fa_r=92, ua_l=-14, fa_l=-6, th_r=10, sh_r=0, th_l=-10, sh_l=0),
     "offer":   dict(torso=176, head=170, ua_r=70, fa_r=110, ua_l=-12, fa_l=-6, th_r=8, sh_r=0, th_l=-8, sh_l=0),
     "lookup":  dict(torso=184, head=202, ua_r=10, fa_r=6, ua_l=-10, fa_l=-6, th_r=6, sh_r=0, th_l=-6, sh_l=0),
@@ -270,6 +270,10 @@ def draw_guy(c, x, ground, pose, s=1.0, t=0.0, flip=False, shadow=False, expr="d
     hx, hy = j["head"]
     if hoodie and not shadow:
         oval(c, hx - 4, hy - 4, R_HEAD * 1.24, R_HEAD * 1.22, fill(HOODIE_BACK))
+        if raised:
+            # raised arm goes over the hood but under the face
+            _limb(c, [j["shoulder"], j["elbow_r"], j["hand_r"]], W_ARM, body_c)
+            circle(c, *j["hand_r"], 14, fill(hand_c))
     hp = fill(SKIN if (hoodie and not shadow) else body_c)
     if not shadow:
         hp.setShader(skia.GradientShader.MakeRadial(skia.Point(hx - 18, hy - 22), 80,
@@ -288,7 +292,7 @@ def draw_guy(c, x, ground, pose, s=1.0, t=0.0, flip=False, shadow=False, expr="d
             dx, dy = hx - 40 + k * 70, hy - 20 + ph * 40
             drop = poly([(dx, dy - 8), (dx + 5, dy + 3), (dx, dy + 7), (dx - 5, dy + 3)])
             c.drawPath(drop, fill("#9AD1FF", int(200 * sweat * (1 - ph))))
-    if not raised or hoodie:
+    if not raised:
         _limb(c, [j["shoulder"], j["elbow_r"], j["hand_r"]], W_ARM, body_c)
         circle(c, *j["hand_r"], 14, fill(hand_c))
     if layer:

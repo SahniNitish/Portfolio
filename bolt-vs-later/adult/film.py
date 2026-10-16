@@ -143,7 +143,7 @@ def captions(c, caps, T):
             return
 
 
-def render(ep, preview=None, workers_hint=""):
+def render(ep, preview=None, segment=None):
     t0 = time.time()
     os.makedirs(BUILD, exist_ok=True)
     os.makedirs(OUT, exist_ok=True)
@@ -178,6 +178,18 @@ def render(ep, preview=None, workers_hint=""):
         if s.get("fade_in") and T - s["start"] < 0.5:
             fx.flash(c, 1 - (T - s["start"]) / 0.5, "#000000")
         return surface.makeImageSnapshot().toarray()
+
+    if segment is not None:
+        t0, t1, seg_path = segment
+        f0, f1 = int(round(t0 * FPS)), min(nframes, int(round(t1 * FPS)))
+        cmd = ["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "bgra", "-s", f"{W}x{H}", "-r", str(FPS),
+               "-i", "-", "-c:v", "libx264", "-preset", "medium", "-crf", "14", "-pix_fmt", "yuv420p", seg_path]
+        proc = subprocess.Popen(cmd, stdin=subprocess.PIPE)
+        for fi in range(f0, f1):
+            proc.stdin.write(frame(fi).tobytes())
+        proc.stdin.close()
+        proc.wait()
+        return f0 / FPS, f1 / FPS
 
     if preview is not None:
         from PIL import Image

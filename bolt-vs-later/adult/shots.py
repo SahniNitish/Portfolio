@@ -615,7 +615,7 @@ def shot_dawn(c, ctx):
     if fade < 1:
         draw_guy(c, 600, G + 10, POSES["arms_cross"], 1.2, T, shadow=True, expr="hurt", alpha=int(255 * (1 - fade)), glow=1 - fade)
         fx.embers(c, T, n=50, color=RED, area=(480, 450, 260, 450), alpha=int(220 * (1 - fade)))
-    pose = POSES[p.get("pose", "victory" if k > 0.55 else "stand")]
+    pose = POSES[p.get("pose", "fists" if k > 0.55 else "stand")]
     draw_guy(c, 1100, G, pose, 1.0, T, expr="happy" if k > 0.55 else "determined", breath=0.4 * (1 - k),
              hoodie=p.get("hoodie", True))
     fx.snow(c, T, n=int(80 * (1 - k)), wind=0.3, alpha=120)
