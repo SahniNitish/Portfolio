@@ -2,6 +2,7 @@
 
 How we make every episode, from idea to posted on YouTube and Facebook. If something isn't written here, it isn't part of the process yet.
 
+**Channel:** **LunchBox Express** (YouTube + Facebook; branding in `assets/brand/`, rebuilt by `tools/brand.py`).
 **The show:** *What If…?*, animated "what if" stories told to the viewer as "you", starring a stick-figure hero in a striped nightcap.
 **Main format:** 16:9 YouTube video, 8–12 min.
 **Spin-off format:** 9:16 Shorts / Reels, 20–60 s, cut from each episode.

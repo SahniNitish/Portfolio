@@ -11,7 +11,7 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageEnhance
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "assets", "brand")
 ANTON = os.path.join(ROOT, "assets", "fonts", "Anton.ttf")
-CHANNEL = sys.argv[1] if len(sys.argv) > 1 else "Nightcap Tales"
+CHANNEL = sys.argv[1] if len(sys.argv) > 1 else "LunchBox Express"
 TAGLINE = "WHAT IF… STORIES WITH A TWIST"
 SUBLINE = "NEW EPISODE EVERY WEEK"
 NAVY, NAVY2, BLUE, YELLOW, INK, WHITE = (16, 26, 52), (38, 30, 78), (74, 127, 208), (255, 204, 0), (0, 0, 0), (255, 255, 255)
