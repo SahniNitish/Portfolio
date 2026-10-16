@@ -5,3 +5,4 @@ mix.wav
 **/img/_*.jpg
 __pycache__/
 _preview.jpg
+assets/brand/_*
