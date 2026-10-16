@@ -1,0 +1,27 @@
+from .kit import *
+
+EP = dict(num=2, bpm=96, key=1, title_lines=["THE 2-MINUTE", "*RULE.*"], shots=[
+    title(),
+    room(10, 0, "The project is huge. So you don't start. You just stare at it.", act="desk", typing=False, x=760,
+         expr="tired", day="DAY 1", clock_speed=120),
+    text(["Your brain predicts it will *hurt.*", "It usually *doesn't.*"], 12, every=6),
+    room(12, 1, "Wait until you feel ready.", who="later", vo_at=5, act="stand", pose="head_down", x=1000, expr="sad",
+         shadow="offer", sx=700, offer="phone", text=["*Ready*", "never comes."], every=3, text_at=1),
+    text(["*Two minutes.*", "Make the start too small to refuse."], 12, vo="So make the start tiny. If something takes less than two minutes, do it now.", every=6),
+    fight("*Set a 2-minute timer.*", "Set a timer for two minutes. When it rings, you're allowed to stop.",
+          COMBOS[0], (1.0, 0.66), "void"),
+    fight("*Shrink the first step.*", "Not, write the report. Write the title. Not, clean the kitchen. Wash one cup.",
+          COMBOS[4], (0.66, 0.33), "street"),
+    stat(2, "is all you promise. You'll usually keep going.", "the two-minute rule: David Allen, James Clear", suffix=" MIN"),
+    run(["Unfinished things *pull* at you.", "*Use it.*"], "DAY 6", 12,
+        shadow="behind_far"),
+    climb(["The hardest part", "is the *first step.*"], "DAY 9"),
+    kneel(["*Tomorrow*..."], whisper="Start tomorrow. Fresh."),
+    rise("*Two minutes. Now.*"),
+    fight("*Leave a door open.*", "When you stop, write down the very next step. Tomorrow, starting costs nothing.",
+          COMBOS[2], (0.33, 0.0), "hill"),
+    montage([("walk", "2 MIN WALK"), ("write", "2 MIN DRAFT"), ("lift", "2 MIN WORKOUT")], (9, 40)),
+    gym("squat", "DAY 40"),
+    dawn(["Two minutes became", "*an hour.*"], "DAY 41"),
+    end("Your Phone Is Winning"),
+])

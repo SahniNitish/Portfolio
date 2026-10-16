@@ -1,0 +1,26 @@
+from .kit import *
+
+EP = dict(num=4, bpm=94, key=3, title_lines=["PERFECT", "IS *FEAR.*"], shots=[
+    title(),
+    room(12, 0, "An hour on one email. Written. Deleted. Rewritten. Still not sent.", act="desk", typing=True, x=760,
+         expr="tired", day="3:20 AM", clock_speed=150, text=["Delete.", "Rewrite.", "*Delete.*"], every=2, text_at=6),
+    text(["High standards are fine.", "*Fear of mistakes* isn't."], 12,
+         vo="Researchers who combined dozens of studies found high standards aren't the problem. The fear of making mistakes is.", every=6),
+    room(12, 1, "If it's not perfect, don't.", who="later", vo_at=4, act="stand", pose="head_down", x=1050, expr="sad",
+         shadow="behind", sx=820),
+    text(["Perfect or nothing...", "...usually means *nothing.*"], 10, every=4, eyes=True),
+    climb(["Every edit *feels*", "like progress."], "DAY 2", push_at=10),
+    kneel(["*It's not ready.*"], whisper="It's not ready. You're not ready."),
+    rise("*Ship it.*"),
+    fight("*Messy first draft.*", "Make the first draft bad on purpose. A bad draft can be fixed. A blank page can't.",
+          COMBOS[3], (1.0, 0.66), "void"),
+    fight("*Aim for B+.*", "Aim for a B plus. Finished beats flawless, every single time.",
+          COMBOS[1], (0.66, 0.33), "gym"),
+    fight("*Nobody's watching that closely.*", "And remember the spotlight effect. People notice your flaws far less than you think.",
+          COMBOS[2], (0.33, 0.0), "street"),
+    run(["Send it.", "*Then the next one.*"], "DAY 8", shadow="behind_far"),
+    gym("squat", "DAY 12"),
+    montage([("write", "DRAFT"), ("phone_down", "SEND"), ("plan", "NEXT")], (12, 30)),
+    dawn(["Not perfect.", "*Done.*"], "DAY 30"),
+    end("Too Much To Do?"),
+])

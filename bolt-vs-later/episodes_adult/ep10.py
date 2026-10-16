@@ -1,0 +1,27 @@
+from .kit import *
+
+EP = dict(num=10, bpm=100, key=4, title_lines=["YOU FAILED.", "*GOOD.*"], shots=[
+    title(),
+    room(10, 0, "Twenty two days in a row. Then one bad week. Streak gone.", act="stand", pose="head_down", x=960,
+         expr="sad", day="DAY 23", props=[("calendar", 1400, {"y": 420, "marks": 15})]),
+    text(["One slip...", "...and it feels like *it's all ruined.*"], 10, every=4),
+    room(12, 1, "Start again next Monday. Or next year.", who="later", vo_at=4, act="stand", pose="head_down", x=900,
+         expr="sad", shadow="loom", sx=1350),
+    text(["One miss", "is *not* the end."], 12,
+         vo="But in the famous habit study from University College London, missing a single day barely affected progress.", every=6),
+    climb(["The rule isn't *never fail.*", "It's *never miss twice.*"], "DAY 24"),
+    kneel(["*Quit.*"], whisper="You already failed. Quit."),
+    rise("*Again.*"),
+    fight("*The tiny restart.*", "Restart small. One push up. One page. Break the zero.",
+          COMBOS[1], (1.0, 0.66), "gym"),
+    fight("*Learn, don't blame.*", "Ask what got in the way. Fix the plan, not your worth.",
+          COMBOS[3], (0.66, 0.33), "street"),
+    fight("*Plan for the slip.*", "Decide now. If I miss the morning, I do ten minutes at night.",
+          COMBOS[5], (0.33, 0.0), "hill"),
+    run(["*Never*", "*miss twice.*"], "DAY 25"),
+    gym("lift", "DAY 40"),
+    climb(["*Up again.*"], "DAY 60", push_at=None, shadow=False),
+    montage([("lift", "RESTART"), ("plan", "ADJUST"), ("run", "CONTINUE")], (25, 90)),
+    dawn(["You didn't stop falling.", "*You stopped staying down.*"], "DAY 90"),
+    end("Binge the whole season"),
+])

@@ -1,0 +1,26 @@
+from .kit import *
+
+EP = dict(num=9, bpm=96, key=3, title_lines=["THEM", "VS *YOU.*"], shots=[
+    title(),
+    room(10, 0, "Promotions. Marathons. Perfect kitchens. And you, in bed, at midnight.", act="bed_phone", x=960, day="12:03 AM"),
+    text(["You're comparing your *behind the scenes*", "to their *highlight reel.*"], 10, every=5, text_size=84),
+    text(["*Millions* of people.", "*All day.*"], 12,
+         vo="Back in 1954, psychologist Leon Festinger described how we measure ourselves against others. Now we do it with millions of strangers, all day.", every=6),
+    room(12, 1, "Look how far behind you are.", who="later", vo_at=4, act="stand", pose="head_down", x=1000, expr="sad",
+         shadow="offer", sx=700, offer="phone"),
+    climb(["Racing *strangers*", "is a race you *can't win.*"], "DAY 1"),
+    kneel(["*Why even try?*"], whisper="Why even try?"),
+    rise("*Different race.*"),
+    fight("*Race yesterday's you.*", "Compare yourself to who you were yesterday. That's the only fair race.",
+          COMBOS[0], (1.0, 0.66), "street"),
+    stat(37.8, "times better in a year, at 1% a day", "the math: 1.01 to the power of 365", suffix="x"),
+    fight("*1% better.*", "One percent better a day. Tiny steps compound.",
+          COMBOS[4], (0.66, 0.33), "gym"),
+    fight("*Curate your feed.*", "Mute what makes you feel small. Follow what makes you build.",
+          COMBOS[5], (0.33, 0.0), "void"),
+    run(["Eyes on", "*your own lane.*"], "DAY 30", shadow="behind_far"),
+    gym("squat", "DAY 60"),
+    montage([("read", "LEARN"), ("lift", "BUILD"), ("walk", "LIVE")], (1, 100)),
+    dawn(["Your race.", "*Your pace.*"], "DAY 100"),
+    end("You Failed. Good."),
+])

@@ -11,7 +11,7 @@ from engine.gfx import blurred, circle, clamp, col, draw_text, ease_in_out, ease
     fit_lines, lerp, mix, oval, poly, rrect, stroke, text_width, wrap
 from . import fx
 from . import things as Th
-from .rig import POSES, blend, climb_pose, draw_guy, lift_pose, run_pose, walk_pose
+from .rig import POSES, blend, climb_pose, draw_guy, joints, lift_pose, run_pose, walk_pose
 
 W, H, G = fx.W, fx.H, fx.GROUND
 BIG = "Fredoka-Bold.ttf"
@@ -281,8 +281,9 @@ def shot_gym(c, ctx):
         k = 0.5 - 0.5 * math.cos(rep * 2 * math.pi)
         pose = blend(POSES["fists"], dict(POSES["crouch"], torso=165, head=170, th_r=80, sh_r=-10, th_l=-60, sh_l=-10), k)
         pose = dict(pose, ua_r=150, fa_r=60, ua_l=-150, fa_l=-60)
-        j = draw_guy(c, hx, G, pose, 1.0, T, expr="angry", sweat=sweat)
-        Th.draw(c, "barbell", j["neck"][0], j["neck"][1] + 10, 1.0, T)
+        jj = joints(hx, G, pose, 1.2)
+        Th.draw(c, "barbell", jj["neck"][0], jj["neck"][1] + 6, 1.15, T)
+        draw_guy(c, hx, G, pose, 1.2, T, expr="angry", sweat=sweat)
     elif act == "pushup":
         k = 0.5 - 0.5 * math.cos(rep * 2 * math.pi)
         pose = dict(POSES["stand"], ua_r=180 + 0, fa_r=180, ua_l=180, fa_l=180)

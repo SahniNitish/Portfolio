@@ -6,6 +6,9 @@ usage:
   python make.py preview 1          # still frames for each beat -> build/preview
   python make.py thumbs             # thumbnails -> output/thumbnails
   python make.py metadata           # titles, descriptions, chapters, tags -> output/
+
+Adult season (dark, minimal-voice, action):
+  python make.py adult-durations | adult-render 1 2 | adult-thumbs | adult-metadata   -> output/adult/
 """
 import copy
 import importlib
@@ -43,6 +46,22 @@ def main():
     elif cmd == "metadata":
         from engine.metadata import make_all as meta_all
         for m in meta_all():
+            print(m["episode"], m["duration"], m["title"])
+    elif cmd == "adult-render":
+        from adult import film
+        for n in nums:
+            film.render(film.load(n))
+    elif cmd == "adult-durations":
+        from adult import film
+        for n in nums:
+            total, *_ = film.timeline(film.load(n))
+            print(f"ep{n:02d} {int(total // 60)}:{int(total % 60):02d}")
+    elif cmd == "adult-thumbs":
+        from adult.thumbs import make_all as adult_thumbs
+        adult_thumbs(nums)
+    elif cmd == "adult-metadata":
+        from adult.metadata import make_all as adult_meta
+        for m in adult_meta():
             print(m["episode"], m["duration"], m["title"])
     elif cmd == "thumbs":
         from engine.thumbs import make_all

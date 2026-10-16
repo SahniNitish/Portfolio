@@ -1,0 +1,26 @@
+from .kit import *
+
+EP = dict(num=3, bpm=88, key=2, title_lines=["YOUR PHONE", "IS *WINNING.*"], shots=[
+    title(),
+    room(10, 0, "One quick check. Forty minutes later, you can't remember a single thing you saw.", act="bed_phone",
+         x=960, day="1:12 AM", clock_speed=200),
+    stat(205, "phone checks a day, on average", "Reviews.org survey, 2025", suffix="x"),
+    room(12, 1, act="chair_phone", x=1000, shadow="behind", sx=740, day="1:58 AM",
+         text=["It's not weakness.", "It's *designed* to hook you."], every=5),
+    text(["*Infinite scroll.*", "*Autoplay.*", "*Little red dots.*"], 12, vo="Endless feeds. Autoplay. Little red dots. It's a slot machine in your pocket.", every=3),
+    room(12, 1, "Just one more.", who="later", vo_at=5, act="stand", pose="head_down", x=1000, expr="sad",
+         shadow="offer", sx=700, offer="phone", text=["*One more swipe.*"], text_at=1),
+    climb(["The first days", "are *loud.*"], "DAY 3"),
+    kneel(["*Just check it.*"], whisper="Just check it. Nobody will know."),
+    rise("*Put it down.*"),
+    fight("*Another room.*", "Distance. When you need to focus, the phone goes in another room. Even nearby, it pulls at you.",
+          COMBOS[0], (1.0, 0.66), "room"),
+    fight("*Add friction.*", "Friction. Log out. Move the app off your home screen. Every extra tap is a chance to choose.",
+          COMBOS[1], (0.66, 0.33), "street"),
+    fight("*Swap the habit.*", "Then swap it. A book by the bed. A walk outside. Your brain wants a break, so give it a real one.",
+          COMBOS[5], (0.33, 0.0), "void"),
+    run(["Look up.", "*The world is still there.*"], "DAY 12", shadow="behind_far"),
+    montage([("phone_down", "PHONE AWAY"), ("read", "READ"), ("walk", "WALK")], (12, 30)),
+    dawn(["You got your", "*hours back.*"], "DAY 30"),
+    end("Perfectionism Is Fear"),
+])

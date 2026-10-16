@@ -1,0 +1,25 @@
+from .kit import *
+
+EP = dict(num=7, bpm=86, key=1, title_lines=["YOUR FUTURE", "*SELF.*"], shots=[
+    title(),
+    room(10, 0, "Future you will do it. Future you is going to be so tired.", act="chair_phone", x=1000, day="SUNDAY"),
+    text(["To your brain,", "future you is a *stranger.*"], 12,
+         vo="In brain scans by Hal Hershfield and colleagues, thinking about your future self looked a lot like thinking about a stranger.", every=6),
+    room(12, 1, "Let them deal with it.", who="later", vo_at=4, act="desk", typing=False, x=760, expr="tired",
+         shadow="behind", sx=520),
+    text(["Rewards now feel *huge.*", "Rewards later feel *blurry.*"], 10, every=5),
+    run(["Every *later*", "is a bill you send *forward.*"], "DAY 1", 12, shadow="chase"),
+    kneel(["*Not my problem.*"], whisper="Let tomorrow deal with it."),
+    rise("*Tomorrow is me.*"),
+    fight("*Write to future you.*", "Write a letter to yourself a year from now. Make them real.",
+          COMBOS[0], (1.0, 0.66), "void"),
+    fight("*10-10-10.*", "Then ask. How will I feel about this in ten minutes? Ten months? Ten years?",
+          COMBOS[4], (0.66, 0.33), "street"),
+    fight("*Gift it forward.*", "Every task you finish tonight is a gift to tomorrow's you.",
+          COMBOS[2], (0.33, 0.0), "hill"),
+    climb(["Every step now", "is one *they* don't have to take."], "DAY 12", push_at=None),
+    montage([("write", "THE LETTER"), ("plan", "10-10-10"), ("sleep", "EARLY NIGHT")], (12, 30)),
+    gym("squat", "DAY 30"),
+    dawn(["Future you", "*says thanks.*"], "DAY 31"),
+    end("Burnout Isn't Weakness"),
+])

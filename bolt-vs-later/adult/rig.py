@@ -305,6 +305,14 @@ def draw_guy(c, x, ground, pose, s=1.0, t=0.0, flip=False, shadow=False, expr="d
     return out
 
 
+def joints(x, ground, pose, s=1.0, flip=False, air=0.0):
+    """World joint positions without drawing (no rotation/seat support)."""
+    j = skeleton(pose)
+    sx = -s if flip else s
+    oy = ground - (lowest(j) + air) * s
+    return {k: (x + v[0] * sx, oy + v[1] * s) for k, v in j.items()}
+
+
 def _soft(color, a):
     p = fill(color, a)
     p.setMaskFilter(skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, 8))

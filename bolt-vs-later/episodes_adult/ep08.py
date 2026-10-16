@@ -1,0 +1,26 @@
+from .kit import *
+
+EP = dict(num=8, bpm=92, key=2, title_lines=["ALWAYS", "*TIRED?*"], shots=[
+    title(),
+    room(10, 0, "Weeks of late nights. No breaks. Now even small things feel impossible.", act="desk", typing=True,
+         x=760, expr="tired", day="2:40 AM", clock_speed=300),
+    text(["*Exhaustion.*", "*Cynicism.*", "*Getting less done.*"], 12,
+         vo="The World Health Organization describes burnout as chronic work stress that hasn't been managed.", every=3),
+    stat(33, "of young adults say work is their biggest stressor", "Talker Research poll of 2,000 people", suffix="%"),
+    room(12, 1, "Push harder. Rest is for the weak.", who="later", vo_at=5, act="chair_phone", x=1000,
+         shadow="behind", sx=740, text=["Scrolling *feels* like rest.", "It *isn't.*"], every=5),
+    climb(["Running on", "*empty.*"], "WEEK 6"),
+    kneel(["*Keep grinding.*"], whisper="Keep grinding. Don't you dare stop."),
+    rise("*Recharge.*"),
+    fight("*Work in sprints.*", "Work in sprints. Twenty five minutes on. Five minutes off.",
+          COMBOS[1], (1.0, 0.66), "room"),
+    fight("*Protect your sleep.*", "Protect your sleep. Seven hours or more for adults. It's maintenance, not laziness.",
+          COMBOS[3], (0.66, 0.33), "void"),
+    fight("*Take real breaks.*", "Take real breaks. A walk. No screens. And if the tiredness won't lift, talk to a doctor.",
+          COMBOS[2], (0.33, 0.0), "hill"),
+    gym("squat", "DAY 14", sweat=0.3),
+    montage([("walk", "WALK"), ("sleep", "SLEEP"), ("water", "WATER")], (1, 21)),
+    run(["*Rest* is part", "of the work."], "DAY 21", dawn=0.4),
+    dawn(["Battery:", "*full.*"], "DAY 22"),
+    end("Stop Comparing Yourself"),
+])

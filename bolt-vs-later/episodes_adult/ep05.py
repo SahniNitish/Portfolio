@@ -1,0 +1,26 @@
+from .kit import *
+
+EP = dict(num=5, bpm=98, key=4, title_lines=["TOO MUCH", "TO *DO.*"], shots=[
+    title(),
+    room(10, 0, "Twelve things due. So your brain does the only thing it can. Nothing.", act="desk", typing=False,
+         x=760, expr="shocked", day="MONDAY", props=[("bills", 1320, {}), ("cans", 1560, {"s": 0.7})]),
+    text(["When everything is *urgent*,", "nothing feels *possible.*"], 10, every=5),
+    stat(54, "named an overwhelming workload as a reason they procrastinate", "BMC Psychology study, 2025", suffix="%"),
+    room(12, 1, "Rest. Decide later.", who="later", vo_at=4, act="stand", pose="head_down", x=900, expr="sad",
+         shadow="loom", sx=1350, props=[("bills", 520, {})]),
+    text(["Your mind is a *desk*,", "not a *warehouse.*"], 12, vo="Your working memory is small. Try to hold every task in your head, and it jams.", every=6),
+    climb(["Twelve things.", "*One at a time.*"], "DAY 1"),
+    kneel(["*Too much.*"], whisper="It's too much. Just stop."),
+    rise("*One thing.*"),
+    fight("*Brain dump.*", "Step one. Write everything down. In one study, simply making a plan quieted the mental noise.",
+          COMBOS[0], (1.0, 0.66), "room"),
+    fight("*Pick one.*", "Step two. Pick one. The one that makes everything else easier.",
+          COMBOS[4], (0.66, 0.33), "void"),
+    fight("*Eat the frog.*", "Step three. Do the hardest thing first, before the day gets loud.",
+          COMBOS[2], (0.33, 0.0), "street"),
+    run(["*One thing*", "at a time."], "DAY 5"),
+    gym("lift", "DAY 14"),
+    montage([("plan", "DUMP IT"), ("write", "PICK ONE"), ("lift", "DO IT")], (5, 21)),
+    dawn(["The list got shorter.", "*So did the fear.*"], "DAY 21"),
+    end("Motivation Is a Lie"),
+])

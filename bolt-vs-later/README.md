@@ -64,3 +64,32 @@ Words wrapped in `*asterisks*` are highlighted yellow in the captions. Add `tts=
 - **Music & sound effects:** synthesised from scratch in `engine/audio.py`, so there's no Content ID risk.
 - **Fonts:** Luckiest Guy (Apache 2.0), Fredoka (OFL), via Google Fonts.
 - **Art & animation:** drawn procedurally in `engine/` (skia).
+
+---
+
+# Season 2 (adults): VS LATER 🌑
+
+A darker, adult rework inspired by minimalist "discipline arc" animation: **less narration, more action**.
+
+- **You:** a plain cream-coloured everyman with determined brows (a black hoodie outdoors).
+- **LATER:** your shadow self. It's the same body in black with a red glow, slit eyes and a smirk, and it offers pizza, phones, the gaming chair... and fights back.
+- Dark, flat sets (a night room with a snowy window, a gym grid, a blizzard hill over the city, night streets, dawn), letterbox bars, film grain, and **DAY counters**.
+- About 75–95 narrated words per episode (deep, calm narrator; LATER whispers in red). The ideas land through big on-screen lines, fights, chases, climbs and montages, all cut on the beat of a synthesized dark score.
+
+| # | Title | Length |
+|---|---|---|
+| 1 | You're Not Lazy. You're Avoiding Something. | 2:02 |
+| 2 | Starting Is the Whole Fight (The 2-Minute Rule) | 2:01 |
+| 3 | Your Phone Is Winning. Here's How to Fight Back. | 2:12 |
+| 4 | Perfectionism Is Just Fear in a Suit | 2:01 |
+| 5 | Too Much to Do? Do This One Thing First | 2:02 |
+| 6 | Motivation Is a Lie. Build This Instead. | 2:01 |
+| 7 | You Keep Betraying Your Future Self | 2:01 |
+| 8 | Always Tired? Burnout Isn't Weakness | 2:03 |
+| 9 | Stop Measuring Your Life Against Strangers | 2:08 |
+| 10 | You Failed. Good. Now Never Miss Twice. | 2:02 |
+
+Output: `output/adult/videos`, `output/adult/thumbnails`, `output/adult/descriptions`, `output/adult/UPLOAD_KIT.md`.
+
+Code: `adult/rig.py` (skeleton + both characters), `adult/shots.py` (shot library: room, gym, run, climb, fight, kneel, rise, montage, dawn...), `adult/film.py` (beat-locked timeline, mix, render), `adult/sound.py` (score + SFX), `episodes_adult/` (shot lists).
+Voices: `en_US-john-medium` (narrator, public domain) and `en_US-bryce-medium` (LATER's whisper, public domain).
