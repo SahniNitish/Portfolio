@@ -122,6 +122,11 @@ Each episode picks its own two counters. See the episode list in section 9.
    - **ends on a teaser** that takes something away: *"It's the last time that's true."*
 6. **Ending (last 30 s).** Something quiet and emotional, then one final twist line. Then a hard cut to black.
 
+### 3.1b Length and series rules (decided with the channel owner)
+- **Every episode runs at least 3–4 minutes** (about 520–600 words). Stretch the middle with more escalation steps, not padding.
+- **Part 2, 3…** open with a quick **recap** (6–8 lines, about 25 s, "Last time…", with a PREVIOUSLY tag), then a title card.
+- Exact production steps for any assistant are in **`RECIPE.md`**.
+
 ### 3.2 Writing rules
 - Talk to the viewer as "you", in the present tense.
 - Sentences of 12 words or fewer. Three short lines beat one long one.

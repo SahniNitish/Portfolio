@@ -253,6 +253,70 @@ def message_phone(contact, number, text, typed, header_glow=0.0, t=0.0):
     return p
 
 
+def _cracks(p, seed=3):
+    """Draw a cracked-glass pattern over a phone image."""
+    rng = random.Random(seed)
+    d = ImageDraw.Draw(p)
+    for _ in range(9):
+        x, y = PW * 0.62, PH * 0.3
+        for _ in range(6):
+            nx, ny = x + rng.uniform(-90, 90), y + rng.uniform(-40, 140)
+            d.line((x, y, nx, ny), fill=(255, 255, 255, 210), width=2)
+            x, y = nx, ny
+
+
+def sent_phone(contact, sent, shown, draft="", cracked=True):
+    """Outgoing chat history (blue bubbles, newest at the bottom) plus a draft in the input bar."""
+    global _SHELL
+    if _SHELL is None:
+        _SHELL = _phone_shell()
+    p = _SHELL.copy()
+    d = ImageDraw.Draw(p)
+    d.rectangle((22, 90, PW - 23, 190), fill=(240, 240, 244))
+    d.text((PW / 2, 124), "To:", font=font(22, "SemiBold"), fill=(120, 120, 120), anchor="mm")
+    d.text((PW / 2, 160), contact, font=font(40), fill=RED, anchor="mm")
+    f = font(30, "SemiBold")
+    bottom = PH - 150
+    vis = sent[: max(0, int(math.ceil(shown)))]
+    y = bottom
+    for k, msg in enumerate(reversed(vis)):
+        lines = _wrap(d, msg, f, PW - 210)
+        bh = 24 + 40 * len(lines)
+        y -= bh + 16
+        if y < 205:
+            break
+        a = clamp01(shown - (len(vis) - 1 - k)) if k == 0 else 1
+        col = tuple(round(lerp(250, c, a)) for c in (40, 120, 255))
+        d.rounded_rectangle((140, y, PW - 46, y + bh), 28, fill=col)
+        for j, ln in enumerate(lines):
+            d.text((164, y + 12 + j * 40), ln, font=f, fill=tuple(round(lerp(250, 255, a)) for _ in range(3)))
+    d.rounded_rectangle((44, PH - 128, PW - 46, PH - 66), 31, outline=(200, 200, 205), width=3, fill=PAPER)
+    if draft:
+        d.text((70, PH - 97), draft, font=font(30, "SemiBold"), fill=INK, anchor="lm")
+        d.ellipse((PW - 106, PH - 122, PW - 54, PH - 72), fill=(40, 120, 255))
+        d.text((PW - 80, PH - 98), "↑", font=font(30, "Bold"), fill=PAPER, anchor="mm")
+    if cracked:
+        _cracks(p)
+    return p
+
+
+def send_phone(t, pressed=0.0):
+    """A blank screen with one big pulsing SEND button."""
+    global _SHELL
+    if _SHELL is None:
+        _SHELL = _phone_shell()
+    p = _SHELL.copy()
+    d = ImageDraw.Draw(p)
+    d.text((PW / 2, 200), "TOMORROW", font=font(40), fill=(150, 150, 150), anchor="mm")
+    r = 150 * (1 + 0.05 * math.sin(t * 5)) * (1 - 0.12 * clamp01(pressed))
+    cx, cy = PW / 2, PH / 2
+    d.ellipse((cx - r - 26, cy - r - 26, cx + r + 26, cy + r + 26), fill=(255, 225, 225))
+    d.ellipse((cx - r, cy - r, cx + r, cy + r), fill=RED)
+    d.text((cx, cy), "SEND", font=font(96), fill=PAPER, anchor="mm")
+    d.text((PW / 2, PH - 170), "TO: ME (YESTERDAY)", font=font(30), fill=(120, 120, 120), anchor="mm")
+    return p
+
+
 def place_phone(frame, phone, t, t_in, x=1240, y=70, scale=0.95, wobble=0.0, out_at=None):
     u = ease_out_back((t - t_in) / 0.45)
     if out_at is not None and t > out_at:
