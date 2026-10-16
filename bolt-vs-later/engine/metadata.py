@@ -95,26 +95,32 @@ def ts(t):
 
 
 def chapters(ep):
-    cands = []
-    seen_later = 0
-    weapon_n = 0
-    prev = None
-    for b in ep["beats"]:
-        sc = b["scene"]
-        if sc == prev:
-            continue
-        prev = sc
-        if sc == "fight":
-            weapon_n += 1
-            lab = f"{b.get('tag', 'Weapon').title()}: {b.get('name', '').title()}"
-        elif sc == "later":
-            seen_later += 1
-            lab = "Meet Lord Later" if seen_later == 1 else "Lord Later strikes back"
-        else:
-            lab = SCENE_LABEL.get(sc, sc.title())
-        cands.append((b["start"], lab))
+    """Story-arc chapters (YouTube needs >= 3 chapters, each >= 10s, first at 0:00)."""
+    beats = ep["beats"]
+
+    def first(pred):
+        for i, b in enumerate(beats):
+            if pred(i, b):
+                return b["start"]
+        return None
+    # the fight chapter starts where Lord Later taunts Bolt right before the first weapon
+    first_later = next(i for i, b in enumerate(beats) if b["scene"] == "later")
+    fi = next(i for i, b in enumerate(beats) if b["scene"] == "fight")
+    j = fi
+    while j - 1 > first_later + 1 and beats[j - 1]["scene"] == "later":
+        j -= 1
+    fight_start = beats[j]["start"]
+    marks = [
+        (first(lambda i, b: b["scene"] == "struggle"), "The struggle"),
+        (first(lambda i, b: b["scene"] == "later"), "Meet Lord Later"),
+        (first(lambda i, b: b["scene"] in ("talk", "stat", "compare") and i > 2), "The science"),
+        (fight_start, "Bolt fights back: 3 weapons"),
+        (first(lambda i, b: b["scene"] == "win"), "Victory!"),
+        (first(lambda i, b: b["scene"] == "list"), "Recap"),
+        (first(lambda i, b: b["scene"] == "outro"), "Your mission"),
+    ]
     out = [(0.0, "Intro")]
-    for (t, lab) in cands[1:]:
+    for (t, lab) in sorted([m for m in marks if m[0] is not None]):
         if t - out[-1][0] >= 10:
             out.append((t, lab))
     return out

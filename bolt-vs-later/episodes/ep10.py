@@ -20,7 +20,7 @@ EP = dict(
         dict(scene="fight", weapon="shield", tag="WEAPON #3", name="PLAN FOR THE SLIP", hp=0.0, hit="K.O.!", say="Weapon three: *plan for the slip* before it happens. If I miss my morning workout, then I'll do ten minutes at night. Now a miss has a backup, instead of a breakdown."),
         dict(scene="talk", pose="wave", say="Every person you admire has failed more times than you've seen. Students fail tests. Founders fail businesses. Grandparents can tell you about decades of restarts. Failing isn't the opposite of success. It's part of the path."),
         dict(scene="win", card="BACK IN THE GAME!", prop="mountain", say="And that's the real superpower. Not never falling. Always getting back up. Lord Later can win a day. He can't win the season."),
-        dict(scene="list", title="RECAP", items=["One miss isn't failure", "Never miss twice", "Forgive yourself, then restart", "Do a tiny version", "Plan for the slip"], say="Recap. One miss isn't failure. Never miss twice. Forgive yourself, and restart. Do a tiny version. And plan for the slip."),
+        dict(scene="list", title="RECAP", items=["One miss isn't failure", "Never miss twice", "Forgive yourself, then restart", "Do a tiny version", "Plan for the slip"], say="Quick recap. One miss is not failure. Never miss twice. Forgive yourself, and restart. Do a tiny version. And plan for the slip."),
         dict(scene="outro", mission="Restart ONE dropped habit today, with its tiniest version.", next="Binge the whole season!", extra=2.0, say="Your mission: pick one habit you dropped, and restart it today with the tiniest version. That's the end of season one, so go back and binge the whole series. Thanks for fighting Lord Later with me. Bolt out!"),
     ],
 )
