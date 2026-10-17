@@ -15,3 +15,6 @@ Bite-sized animated "what if" stories with a twist. 🍱 Grab your lunch, press 
 
 ## Short description for the end of every video
 🍱 LunchBox Express: "what if" stories with a twist. Subscribe for a new episode every week!
+
+## YouTube channel keywords (Studio → Settings → Channel → Keywords, max 500 characters)
+LunchBox Express, what if, what if stories, what would happen if, animated stories, animation story, story animation, stickman animation, stickman story, cartoon story, animated short, plot twist, twist ending, mystery story, time travel, future, sci fi animation, hypothetical scenarios, thought experiment, storytelling, cliffhanger, short story, animated series, funny animation, mind blowing stories
