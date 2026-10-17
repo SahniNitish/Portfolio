@@ -163,8 +163,8 @@ def frame_at(t):
 
     elif t < L(24):                                                     # aftermath, the hat
         u = seg(t, 21, 23)
-        z = 1.0 + 0.1 * ease(seg(t, 21, 22)) + 0.5 * ease(seg(t, 23))
-        f = cam(IMG["aftermath"], 0.5, lerp(0.5, 0.7, ease(seg(t, 23))), z)
+        z = 1.0 + 0.1 * ease(seg(t, 21, 22)) + 0.6 * ease(seg(t, 23))
+        f = cam(IMG["aftermath"], lerp(0.5, 0.32, ease(seg(t, 23))), lerp(0.5, 0.85, ease(seg(t, 23))), z)
 
     elif t < L(25):                                                     # phone inside the hat
         f = cam(IMG["hat_phone"], 0.5, 0.5, 1.0 + 0.2 * seg(t, 24))
@@ -209,7 +209,7 @@ def frame_at(t):
         name = "wall" if int(u * 6) % 2 == 0 else "old_hero"
         f = rgb_split(cam(IMG[name], 0.5, 0.5, 1.15), 6, scan=False) if int(u * 24) % 4 == 0 else cam(IMG[name], 0.5, 0.5, 1.15)
         for k, (lab, dt) in enumerate([("YEAR 1", 0.0), ("YEAR 5", 0.9), ("YEAR 20", 1.8)]):
-            float_text(f, t, L(44) + dt, lab, (960, 560), color=YELLOW, size=140, rise=40, life=1.0)
+            float_text(f, t, L(44) + dt, lab, (1480, 880), color=YELLOW, size=140, rise=40, life=1.0)
 
     elif t < L(48):                                                     # the headline, 20 years later
         u = seg(t, 46, 47)
