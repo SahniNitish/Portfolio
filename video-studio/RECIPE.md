@@ -14,7 +14,12 @@ This file is written so **any assistant, including a smaller model, can make an 
    - Start with a **20–30 second recap**: 6–8 short lines beginning "Last time, …", shown with a "PREVIOUSLY" tag.
    - Then a black **title card** ("PART 2" / subtitle) during a 3-second gap.
    - End with "TO BE CONTINUED" or "THE END".
-4. **The hero** is always the stick figure with the **blue-and-white striped nightcap**. **The host** always has black glasses and a red bow tie. Copy the prompt fragments in section 4 *exactly*.
+4. **House style is "slow, clean and explained"** (the channel owner asked for it after Part 2 v1):
+   - **Hook first:** 4–5 lines showing the biggest moment, before any recap or setup ("This man saved your life… twenty years later you find out who he was").
+   - **Pace:** voice with `KOKORO_SPEED=0.92`, and use **0.6 s** as the default gap (longer, 0.8–1.4 s, after reveals).
+   - **Explain the twist out loud:** "Think about what that means…". Bring the host back with a card for any idea that could confuse viewers, and say the final reveal plainly ("It was you. It was always you.").
+   - **Final line asks a question** ("Tell us what you think in the comments"), shown over an end card.
+5. **The hero** is always the stick figure with the **blue-and-white striped nightcap**. **The host** always has black glasses and a red bow tie. Copy the prompt fragments in section 4 *exactly*.
 5. **No text inside AI images.** All words (headlines, signs, cheques, counters) are drawn in code.
 6. **Audio:** voice through `clean_voice`, mastered to −14 LUFS by `finish_audio`. These are already wired into the template, so don't remove them.
 7. **Never commit `.mp4` files** (too big). Commit everything else. Send the video to the user as a file.

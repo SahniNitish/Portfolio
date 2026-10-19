@@ -1,11 +1,11 @@
-"""EP05: Tomorrow's News, Part 2: "The Man in the Grey Coat"   (about 3:45, 16:9)
+"""EP05: Tomorrow's News, Part 2: "The Man in the Grey Coat"   (slow, explanatory cut, about 5:15, 16:9)
 
-    python tools/tts.py episodes/ep05-grey-coat           # voice
-    python episodes/ep05-grey-coat/episode.py             # clean audio + render + thumbnail
-    python tools/preview.py episodes/ep05-grey-coat       # (optional) contact sheet of key frames first
+    KOKORO_SPEED=0.92 python tools/tts.py episodes/ep05-grey-coat   # voice (slower than default on purpose)
+    python tools/preview.py episodes/ep05-grey-coat                 # contact sheet of key frames first
+    python episodes/ep05-grey-coat/episode.py                       # clean audio + render + thumbnail
 
-Images from Part 1 are reused from ../ep04-tomorrows-news/img. Any image missing from img/ renders as a
-labelled placeholder, so timing can be checked before the art exists.
+Structure: 20 s hook → recap (PREVIOUSLY) → title card → story → host explains the twist twice → reveal
+→ "There are two of us" → comment question + end card. Part 1 images are reused from ../ep04-tomorrows-news/img.
 """
 import os, random, sys
 import numpy as np
@@ -28,10 +28,12 @@ for i in range(1, N + 1):
     if not os.path.exists(dst) or os.path.getmtime(dst) < os.path.getmtime(src):
         clean_voice(src, dst)
 
-GAPS = [0.45] * N
-for i, g in {6: 0.5, 7: 3.2, 11: 0.6, 15: 0.2, 16: 0.15, 17: 0.1, 18: 0.1, 19: 0.3, 20: 1.6, 23: 0.5, 24: 0.6,
-             29: 0.4, 30: 1.0, 33: 0.6, 37: 0.6, 41: 0.5, 43: 0.8, 45: 0.6, 47: 0.7, 49: 0.5, 51: 0.8, 55: 1.2,
-             56: 0.4, 58: 0.6, 59: 3.4}.items():
+# 0-based line index -> pause after it. Default is slow (0.6 s); action lines are tight, reveals linger.
+GAPS = [0.6] * N
+for i, g in {0: 0.5, 3: 0.7, 4: 1.3, 14: 3.2, 19: 0.9, 22: 0.5, 23: 0.3, 24: 0.3, 25: 0.15, 26: 0.15, 27: 0.1,
+             28: 0.1, 29: 0.1, 30: 0.5, 31: 1.8, 34: 0.8, 35: 0.8, 36: 0.9, 39: 0.9, 41: 0.7, 42: 0.8, 44: 0.9,
+             46: 1.2, 50: 0.9, 55: 1.0, 59: 0.7, 62: 1.0, 64: 0.8, 67: 1.0, 70: 1.0, 73: 0.8, 75: 1.4, 76: 0.5,
+             78: 0.7, 79: 1.5, 80: 3.2}.items():
     GAPS[i] = g
 TL = Timeline([p("audio", "clean", f"l{i}.wav") for i in range(1, N + 1)], GAPS)
 L, END, TOTAL = TL.L, TL.end, TL.total
@@ -52,7 +54,8 @@ def img(name, part1=False):
     return ph
 
 
-IMG = {n: img(n, part1=True) for n in ["coldopen", "bedroom", "lottery", "bus", "fire", "stranger", "livingroom"]}
+IMG = {n: img(n, part1=True) for n in ["coldopen", "bedroom", "rain", "lottery", "bus", "fire", "stranger",
+                                       "livingroom", "reveal"]}
 _br = Image.open(P1("img", "bridge.jpg")).convert("RGB")
 text_on(_br, (410, 196), "BRIDGE RD", 52, fill=(255, 255, 255))
 IMG["bridge"] = _br.resize((2304, round(2304 * _br.height / _br.width)), Image.LANCZOS)
@@ -76,175 +79,206 @@ def previously(f):
     d.text((185, 66), "PREVIOUSLY", font=font(40), fill=YELLOW, anchor="mm")
 
 
+def black():
+    return Image.new("RGBA", (W, H), (0, 0, 0, 255))
+
+
 # ---------------------------------------------------------------- copy
 CRASH = "Local man in fatal crash on Bridge Road"
+DAY1 = ["Local team wins 4-1", "Heavy rain at 3 PM", "Corner bakery closes for good"]
 SENT = ["Local team wins 4-1", "Heavy rain at 3 PM", "Record $48M jackpot: one winner", "Who is the mystery winner?",
         "Bus crash on Bridge Road: 40 injured", "Fire on Bridge Road", "Local man in fatal crash on Bridge Road",
         "Go to Bridge Road. Trust me."]
-RULES2 = ["SEND TOMORROW'S NEWS", "ONLY WHAT KEEPS HIM ALIVE", "MISS ONE DAY: IT ALL BREAKS"]
+RULES2 = ["SEND TOMORROW'S NEWS", "ONLY WHAT KEEPS HIM ALIVE", "NEVER MISS A SINGLE DAY"]
 LAST_MSG = "Go to Bridge Road. Trust me. I've done this before."
+RECAP = [("coldopen", 0.6), ("bedroom", 0.62), ("rain", 0.5), ("lottery", 0.6), ("bus", 0.5), ("fire", 0.5),
+         ("stranger", 0.5), ("coldopen", 0.6), ("livingroom", 0.4), ("bridge", 0.5)]          # lines 5..14
 
 
 def hud_state(t):
-    if t < L(8) or L(20) <= t < L(21) or L(34) <= t < L(38) or t >= END(59) + 0.6:
+    hidden = [(0, 15), (31, 32), (42, 45), (51, 56), (80, N + 1)]
+    if any(L(a) <= t < L(b) for a, b in hidden):
         return None
-    if t < L(21):
-        return ("DAY", 147), ("TIME", "6:00 PM"), (6, -9)
     if t < L(31):
+        return ("DAY", 147), ("TIME", "6:00 PM"), (6, -9)
+    if t < L(47):
         return ("DAY", 147), ("TIME", "6:01 PM"), (6, -9)
-    if t < L(34):
-        return ("DAY", 148), ("MESSAGES SENT", 0), (7, L(31))
-    if t < L(44):
-        u = ease(seg(t, 38, 43))
-        return ("DAY", round(148 + 260 * u)), ("MESSAGES SENT", round(260 * u)), (8, L(38))
-    if t < L(46):
-        u = ease(seg(t, 44, 45))
-        return ("YEAR", max(1, round(20 * u))), ("MESSAGES SENT", round(260 + 7040 * u)), (10, L(44))
-    if t < L(52):
-        return ("YEAR", 20), ("MESSAGES SENT", 7305), (11, L(46))
-    return ("YEAR", 20), ("TIME", "5:59 PM"), (12, L(52))
+    if t < L(51):
+        return ("DAY", 148), ("MESSAGES SENT", 0), (7, L(47))
+    if t < L(63):
+        u = ease(seg(t, 56, 62))
+        return ("DAY", round(148 + 260 * u)), ("MESSAGES SENT", round(260 * u)), (8, L(56))
+    if t < L(65):
+        u = ease(seg(t, 63, 64))
+        return ("YEAR", max(1, round(20 * u))), ("MESSAGES SENT", round(260 + 7040 * u)), (10, L(63))
+    if t < L(71):
+        return ("YEAR", 20), ("MESSAGES SENT", 7305), (11, L(65))
+    return ("YEAR", 20), ("TIME", "5:59 PM"), (12, L(71))
 
 
 # ---------------------------------------------------------------- shots
 def frame_at(t):
-    if t < L(8):                                                        # recap
-        shots = [("coldopen", 0.6), ("lottery", 0.6), ("bus", 0.5), ("fire", 0.5), ("stranger", 0.5),
-                 ("coldopen", 0.6), ("livingroom", 0.4), ("bridge", 0.5)]
-        k = next(i for i in range(8) if t < L(i + 1))
-        name, cx = shots[k]
+    if t < L(5):                                                        # HOOK
+        shots = [("overlook", 0.3, 0.45), ("push", 0.45, 0.5), ("stranger", 0.5, 0.42), ("old_hero", 0.5, 0.42),
+                 ("reveal", 0.48, 0.38)]
+        k = next(i for i in range(5) if t < L(i + 1))
+        name, cx, cy = shots[k]
+        f = cam(IMG[name], cx, cy, 1.05 + 0.25 * ease(seg(t, k)))
+        if k == 1:
+            f = grade(f, 0.75, 0.95)
+        if t > END(4) + 0.5:
+            f = black()
+
+    elif t < L(15):                                                     # RECAP + title card
+        k = next(i for i in range(5, 15) if t < L(i + 1))
+        name, cx = RECAP[k - 5]
         f = cam(IMG[name], cx, 0.5, 1.05 + 0.1 * seg(t, k))
-        if k < 7:
+        if k < 14:
             f = grade(f, 0.55, 0.9)
-        if k == 5:
-            place_phone(f, news_phone("TOMORROW · 6:00 PM", [CRASH], 1, breaking=True), t, L(5) + 0.2)
         if k == 6:
+            place_phone(f, news_phone("TOMORROW", DAY1, 3, highlight="date"), t, L(6) + 0.3)
+        if k == 12:
+            place_phone(f, news_phone("TOMORROW · 6:00 PM", [CRASH], 1, breaking=True), t, L(12) + 0.3)
+        if k == 13:
             f = blurred(f, 10, 0.55)
-            typed = clamp01((t - L(6) - 2.2) / 1.6)
-            place_phone(f, message_phone("ME", "MY NUMBER", "Go to Bridge Road. Trust me.", typed, 1, t=t), t, L(6),
+            typed = clamp01((t - L(13) - 3.6) / 1.6)
+            place_phone(f, message_phone("ME", "MY NUMBER", "Go to Bridge Road. Trust me.", typed, 1, t=t), t, L(13),
                         x=680, y=60)
-        if t >= END(7) + 0.25:                                          # title card
-            f = Image.new("RGBA", (W, H), (0, 0, 0, 255))
-            a = clamp01((t - END(7) - 0.4) / 0.5) * clamp01((L(8) - t) / 0.4)
+        if t >= END(14) + 0.25:
+            f = black()
+            a = clamp01((t - END(14) - 0.4) / 0.5) * clamp01((L(15) - t) / 0.4)
             big_title(f, "PART 2", "THE MAN IN THE GREY COAT", a)
         else:
             previously(f)
 
-    elif t < L(12):                                                     # 6 PM on Bridge Road
-        u = seg(t, 8, 11)
+    elif t < L(20):                                                     # 6 PM on Bridge Road
+        u = seg(t, 15, 19)
         f = cam(IMG["bridge_6pm"], lerp(0.45, 0.58, u), 0.5, 1.0 + 0.25 * ease(u))
-        if t >= L(10):
-            place_phone(f, news_phone("TODAY · 6:00 PM", [CRASH], 1, breaking=True, highlight="date"), t, L(10) + 0.4,
-                        x=140)                                          # hero stands on the right here
+        if t >= L(17):
+            place_phone(f, news_phone("TODAY · 6:00 PM", [CRASH], 1, breaking=True, highlight="date"), t, L(17) + 0.4,
+                        x=140)
 
-    elif t < L(13):                                                     # the girl
-        f = cam(IMG["girl"], 0.5, 0.5, 1.0 + 0.12 * seg(t, 12))
+    elif t < L(23):                                                     # the girl
+        f = cam(IMG["girl"], 0.5, 0.5, 1.0 + 0.2 * ease(seg(t, 20, 22)))
 
-    elif t < L(15):                                                     # the truck
-        u = seg(t, 13, 14)
+    elif t < L(25):                                                     # the truck
+        u = seg(t, 23, 24)
         f = cam(IMG["truck"], 0.5, 0.5, 1.0 + 0.35 * ease(u), shake=4 * u)
 
-    elif t < L(16):                                                     # you run
-        f = cam(IMG["girl"], lerp(0.45, 0.55, seg(t, 15)), 0.5, 1.25 + 0.2 * seg(t, 15), shake=10)
+    elif t < L(27):                                                     # you run
+        f = cam(IMG["girl"], lerp(0.45, 0.55, seg(t, 25, 26)), 0.5, 1.25 + 0.2 * seg(t, 25, 26), shake=10)
 
-    elif t < L(17):                                                     # headlights
-        u = seg(t, 16)
+    elif t < L(28):                                                     # headlights
+        u = seg(t, 27)
         f = grade(cam(IMG["truck"], 0.5, 0.45, 1.35 + 0.4 * ease(u), shake=8), 1.0, 1 + 1.2 * u ** 3)
 
-    elif t < L(20):                                                     # the push
-        u = seg(t, 17, 19)
-        hit = L(19) + 0.9
-        shake = 22 * max(0.0, 1 - abs(t - L(17) - 0.2) / 0.6) + (26 * max(0.0, 1 - (t - hit) / 0.7) if t > hit else 0)
+    elif t < L(31):                                                     # the push
+        u = seg(t, 28, 30)
+        hit = L(30) + 1.3
+        shake = 22 * max(0.0, 1 - abs(t - L(28) - 0.3) / 0.6) + (26 * max(0.0, 1 - (t - hit) / 0.7) if t > hit else 0)
         f = cam(IMG["push"], lerp(0.45, 0.55, u), 0.5, 1.1 + 0.15 * u, shake=shake)
         if hit < t < hit + 0.12:
             f = Image.new("RGBA", (W, H), (255, 255, 255, 255))
 
-    elif t < L(21):                                                     # silence
-        f = Image.new("RGBA", (W, H), (0, 0, 0, 255))
+    elif t < L(32):                                                     # silence
+        f = black()
 
-    elif t < L(24):                                                     # aftermath, the hat
-        u = seg(t, 21, 23)
-        z = 1.0 + 0.1 * ease(seg(t, 21, 22)) + 0.6 * ease(seg(t, 23))
-        f = cam(IMG["aftermath"], lerp(0.5, 0.32, ease(seg(t, 23))), lerp(0.5, 0.85, ease(seg(t, 23))), z)
+    elif t < L(36):                                                     # aftermath, the hat
+        hz = ease(clamp01(seg(t, 35) * 1.6))
+        z = 1.0 + 0.1 * ease(seg(t, 32, 34)) + 0.6 * hz
+        f = cam(IMG["aftermath"], lerp(0.5, 0.32, hz), lerp(0.5, 0.85, hz), z)
 
-    elif t < L(25):                                                     # phone inside the hat
-        f = cam(IMG["hat_phone"], 0.5, 0.5, 1.0 + 0.2 * seg(t, 24))
+    elif t < L(37):                                                     # phone inside the hat
+        f = cam(IMG["hat_phone"], 0.5, 0.5, 1.0 + 0.25 * seg(t, 36))
 
-    elif t < L(31):                                                     # the sent messages
+    elif t < L(42):                                                     # the sent messages
         f = blur_of("hat", IMG["hat_phone"])
-        if t < L(26):
-            shown = 0.6
-        elif t < L(27):
-            shown = 0.6 + 6.4 * ease(seg(t, 26))
-        else:
-            shown = 7
-        draft = "Your turn." if t >= L(29) + 0.8 else ""
-        ph = sent_phone("+1 (555) 014-2387  ·  ME", SENT[:7], shown, draft)
-        place_phone(f, ph, t, L(25) - 0.2, x=260, y=40)
-        if t >= L(30):
-            float_text(f, t, L(30) + 0.1, "YOUR TURN.", (1340, 540), color=RED, size=170, rise=0, life=1.6)
+        shown = 0.6 if t < L(38) else 0.6 + 6.4 * ease(seg(t, 38))
+        place_phone(f, sent_phone("+1 (555) 014-2387  ·  ME", SENT[:7], shown), t, L(37) - 0.2, x=260, y=40)
+        if L(39) <= t:
+            float_text(f, t, L(39) + 0.1, "YOUR NUMBER.", (1340, 540), color=YELLOW, size=130, rise=0, life=2.0)
 
-    elif t < L(34):                                                     # the SEND button
-        u = seg(t, 31, 33)
+    elif t < L(45):                                                     # host explains the twist
+        f = blur_of("hat", IMG["hat_phone"])
+        host_in(f, HOST, t, L(42))
+        card(f, t, L(42) + 0.5, ["NOT MAGIC", "IT CAME FROM THIS PHONE"], [L(43) + 0.4, L(44) + 1.0], w=860)
+
+    elif t < L(47):                                                     # the unsent draft
+        f = blur_of("hat", IMG["hat_phone"])
+        draft = "Your turn." if t >= L(45) + 1.6 else ""
+        place_phone(f, sent_phone("+1 (555) 014-2387  ·  ME", SENT[:7], 7, draft), t, L(45) - 0.2, x=260, y=40)
+        if t >= L(46):
+            float_text(f, t, L(46) + 0.6, "YOUR TURN.", (1340, 540), color=RED, size=170, rise=0, life=2.4)
+
+    elif t < L(51):                                                     # the SEND button
+        u = seg(t, 47, 50)
         f = cam(IMG["bedroom"], lerp(0.5, 0.62, ease(u)), lerp(0.5, 0.4, ease(u)), 1.0 + 0.4 * ease(u))
-        if t >= L(32):
-            place_phone(f, send_phone(t), t, L(32) + 0.3)
+        if t >= L(48):
+            place_phone(f, send_phone(t), t, L(48) + 0.3)
 
-    elif t < L(38):                                                     # new rules (host)
+    elif t < L(56):                                                     # new rules (host)
         f = blur_of("bed", IMG["bedroom"], 0.62, 0.4, 1.4)
-        host_in(f, HOST, t, L(34))
-        card(f, t, L(34) + 0.5, RULES2, [L(35), L(36), L(37)], w=840)
+        host_in(f, HOST, t, L(51))
+        card(f, t, L(51) + 0.6, RULES2, [L(52), L(53), L(54)], w=860)
+        if t >= L(55):
+            float_text(f, t, L(55) + 1.8, "NO WARNINGS = NO YOU", (1480, 800), color=RED, size=80, rise=0, life=4.0)
 
-    elif t < L(42):                                                     # the wall
-        u = seg(t, 38, 41)
+    elif t < L(60):                                                     # the wall
+        u = seg(t, 56, 59)
         f = cam(IMG["wall"], lerp(0.4, 0.6, u), 0.5, 1.05 + 0.25 * ease(u))
-        for k, (hl, dt) in enumerate([("BRIDGE CLOSED", 0.2), ("FLOOD ON 5TH", 0.9), ("GAS LEAK", 1.6)]):
-            float_text(f, t, L(40) + dt, hl, (500 + 450 * k, 820 - 60 * k), color=PAPER, size=64, life=1.4)
+        for k, (hl, dt) in enumerate([("BRIDGE CLOSED", 0.3), ("FLOOD ON 5TH", 1.3), ("GAS LEAK", 2.3)]):
+            float_text(f, t, L(58) + dt, hl, (500 + 450 * k, 820 - 60 * k), color=PAPER, size=64, life=1.6)
 
-    elif t < L(44):                                                     # he was protecting you
-        u = seg(t, 42, 43)
+    elif t < L(63):                                                     # he was protecting you
+        u = seg(t, 60, 62)
         f = grade(cam(IMG["stranger"], 0.5, lerp(0.5, 0.4, ease(u)), 1.0 + 0.8 * ease(u)), 0.6 + 0.6 * u, 1.0)
 
-    elif t < L(46):                                                     # the years
-        u = seg(t, 44, 45)
+    elif t < L(65):                                                     # the years
+        u = seg(t, 63, 64)
         name = "wall" if int(u * 6) % 2 == 0 else "old_hero"
-        f = rgb_split(cam(IMG[name], 0.5, 0.5, 1.15), 6, scan=False) if int(u * 24) % 4 == 0 else cam(IMG[name], 0.5, 0.5, 1.15)
-        for k, (lab, dt) in enumerate([("YEAR 1", 0.0), ("YEAR 5", 0.9), ("YEAR 20", 1.8)]):
-            float_text(f, t, L(44) + dt, lab, (1480, 880), color=YELLOW, size=140, rise=40, life=1.0)
+        f = cam(IMG[name], 0.5, 0.5, 1.15)
+        for k, (lab, dt) in enumerate([("YEAR 1", 0.0), ("YEAR 5", 1.0), ("YEAR 20", 2.0)]):
+            float_text(f, t, L(63) + dt, lab, (1480, 880), color=YELLOW, size=140, rise=40, life=1.1)
 
-    elif t < L(48):                                                     # the headline, 20 years later
-        u = seg(t, 46, 47)
+    elif t < L(68):                                                     # the headline, 20 years later
+        u = seg(t, 65, 67)
         f = cam(IMG["old_hero"], 0.6, 0.45, 1.0 + 0.3 * ease(u))
-        place_phone(f, news_phone("TOMORROW · 6:00 PM", [CRASH], 1, breaking=True, highlight="date"), t, L(47) - 0.1)
+        place_phone(f, news_phone("TOMORROW · 6:00 PM", [CRASH], 1, breaking=True, highlight="date"), t, L(66) - 0.1)
 
-    elif t < L(50):                                                     # the coat
-        u = seg(t, 48, 49)
-        f = cam(IMG["coat"], 0.5, 0.45, 1.0 + 0.2 * ease(u))
+    elif t < L(69):                                                     # the coat
+        f = cam(IMG["coat"], 0.5, 0.45, 1.0 + 0.2 * ease(seg(t, 68)))
 
-    elif t < L(52):                                                     # sending the last message
+    elif t < L(71):                                                     # sending the last message
         f = blur_of("coat", IMG["coat"], 0.5, 0.45, 1.2)
-        typing = clamp01((t - L(51)) / (END(51) - L(51)))
-        if t < END(51) + 0.3:
+        typing = clamp01((t - L(70)) / (END(70) - L(70)))
+        if t < END(70) + 0.3:
             ph = sent_phone("ME (21 YEARS AGO)", SENT[:7], 7, LAST_MSG[: int(len(LAST_MSG) * typing)][-26:], cracked=False)
         else:
-            ph = sent_phone("ME (21 YEARS AGO)", SENT, 7 + clamp01((t - END(51) - 0.3) / 0.3), cracked=False)
-        place_phone(f, ph, t, L(50) + 0.6, x=680, y=40)
+            ph = sent_phone("ME (21 YEARS AGO)", SENT, 7 + clamp01((t - END(70) - 0.3) / 0.3), cracked=False)
+        place_phone(f, ph, t, L(69) + 0.6, x=680, y=40)
 
-    elif t < L(56):                                                     # on the bridge, watching yourself
-        u = seg(t, 52, 55)
+    elif t < L(74):                                                     # on the bridge, watching yourself
+        u = seg(t, 71, 73)
         f = cam(IMG["overlook"], lerp(0.4, 0.55, u), 0.5, 1.0 + 0.3 * ease(u))
 
-    elif t < END(59) + 0.6:                                             # two of us
-        u = seg(t, 56, 59)
-        f = cam(IMG["two_coats"], 0.5, 0.5, 1.0 + 0.15 * u)
-        if t >= L(56) + 0.2:
-            f = blurred(f, 6, 0.7) if t > L(57) else f
-            typed = clamp01((t - L(59)) / 1.2)
-            place_phone(f, message_phone("ME", "MY NUMBER", "There are two of us.", typed, 1, t=t), t, L(56) + 0.3,
-                        x=680, y=60, wobble=2 * math.sin(t * 40) if t < L(56) + 1.2 else 0)
+    elif t < L(76):                                                     # the reveal, said out loud
+        u = seg(t, 74, 75)
+        f = cam(IMG["reveal"], 0.48, 0.38, 1.0 + 0.35 * ease(u))
+        if t >= L(75):
+            float_text(f, t, L(75) + 0.2, "IT WAS YOU.", (1400, 760), color=YELLOW, size=150, rise=0, life=3.0)
 
-    else:                                                               # end card
-        f = Image.new("RGBA", (W, H), (0, 0, 0, 255))
-        big_title(f, "TO BE CONTINUED", "PART 3 SOON", clamp01((t - END(59) - 1.2) / 0.5))
+    elif t < L(80):                                                     # two of us
+        f = cam(IMG["two_coats"], 0.5, 0.5, 1.0 + 0.15 * seg(t, 76, 79))
+        if t >= L(76) + 0.2:
+            if t > L(77):
+                f = blurred(f, 6, 0.7)
+            typed = clamp01((t - L(79)) / 1.2)
+            place_phone(f, message_phone("ME", "MY NUMBER", "There are two of us.", typed, 1, t=t), t, L(76) + 0.3,
+                        x=680, y=60, wobble=2 * math.sin(t * 40) if t < L(76) + 1.2 else 0)
+
+    else:                                                               # comment question + end card
+        f = black()
+        big_title(f, "WHO SENT IT?", "COMMENT YOUR THEORY  ·  PART 3 SOON", clamp01((t - L(80)) / 0.5))
 
     st = hud_state(t)
     if st:
@@ -258,35 +292,38 @@ def build_audio():
     tt = np.arange(n) / SR
     voice = TL.voice_track()
     music = music_bed(TOTAL, [[220.0, 261.63, 329.63], [174.61, 220.0, 261.63],
-                              [196.0, 246.94, 293.66], [164.81, 207.65, 246.94]], 4.0, 0.06)
+                              [196.0, 246.94, 293.66], [164.81, 207.65, 246.94]], 4.5, 0.06)
     gain = np.ones(n, np.float32)
-    gain *= 1 - 0.85 * ((tt > END(7)) & (tt < L(8)))                                  # title card: near silence
-    gain *= np.where((tt > L(13)) & (tt < L(21) + 1.0), 0.0, 1.0)                     # action: no music, only sfx
-    gain *= np.clip(1 - (tt - L(56)) / 0.5, 0, 1) + np.clip((tt - END(59) - 0.8) / 1.0, 0, 0.9)
+    gain *= 1 - 0.85 * ((tt > END(14)) & (tt < L(15)))                                # title card: near silence
+    gain *= np.where((tt > L(23)) & (tt < L(32) + 1.0), 0.0, 1.0)                     # action: only sfx
+    gain *= np.clip(1 - (tt - L(76)) / 0.5, 0, 1) + np.clip((tt - L(80)) / 1.0, 0, 0.9)
     music *= np.convolve(gain, np.ones(4800) / 4800, "same")
     fx = np.zeros(n, np.float32)
     ping, pop = sfx("ping"), sfx("pop")
-    for at in [L(5) + 0.2, L(10) + 0.4, L(47) - 0.1]:
+    place(fx, sfx("whoosh"), END(4) + 0.3)
+    for at in [L(6) + 0.3, L(12) + 0.3, L(17) + 0.4, L(66) - 0.1]:
         place(fx, ping, at)
-    place(fx, sfx("buzz"), L(6))
-    place(fx, sfx("boom"), END(7) + 0.4)
-    place(fx, sfx("screech"), L(13) + 0.5)
-    place(fx, sfx("screech"), L(16))
-    place(fx, sfx("whoosh"), L(17))
-    place(fx, sfx("boom") * 1.3, L(19) + 0.9)
+    place(fx, sfx("buzz"), L(13))
+    place(fx, sfx("boom"), END(14) + 0.4)
+    place(fx, sfx("screech"), L(23) + 0.5)
+    place(fx, sfx("screech"), L(27))
+    place(fx, sfx("whoosh"), L(28))
+    place(fx, sfx("boom") * 1.3, L(30) + 1.3)
     for k in range(7):
-        place(fx, ping * 0.3, L(26) + 0.3 * k)
-    place(fx, sfx("boom"), L(30) + 0.1)
-    for at in [L(34) + 0.5, L(35), L(36), L(37)]:
+        place(fx, ping * 0.3, L(38) + 0.35 * k)
+    place(fx, sfx("boom") * 0.7, L(39) + 0.1)
+    for at in [L(42) + 0.5, L(43) + 0.4, L(44) + 1.0, L(51) + 0.6, L(52), L(53), L(54)]:
         place(fx, pop, at)
+    place(fx, sfx("boom"), L(46) + 0.6)
     for k in range(3):
-        place(fx, sfx("pop"), L(40) + [0.2, 0.9, 1.6][k])
-        place(fx, sfx("whoosh") * 0.5, L(44) + 0.9 * k)
-    for k in range(int((END(51) - L(51)) / 0.12)):                                   # typing clicks
-        place(fx, sfx("tick") * 0.6, L(51) + 0.12 * k)
-    place(fx, sfx("ping") * 0.8, END(51) + 0.3)
-    place(fx, sfx("buzz"), L(56) + 0.2)
-    place(fx, sfx("boom") * 1.2, L(59) + 0.4)
+        place(fx, sfx("pop"), L(58) + [0.3, 1.3, 2.3][k])
+        place(fx, sfx("whoosh") * 0.5, L(63) + 1.0 * k)
+    for k in range(int((END(70) - L(70)) / 0.12)):                                   # typing clicks
+        place(fx, sfx("tick") * 0.6, L(70) + 0.12 * k)
+    place(fx, sfx("ping") * 0.8, END(70) + 0.3)
+    place(fx, sfx("boom"), L(75) + 0.2)
+    place(fx, sfx("buzz"), L(76) + 0.2)
+    place(fx, sfx("boom") * 1.2, L(79) + 0.4)
     finish_audio(voice, music, fx, p("mix.wav"), HERE)
 
 
