@@ -7,6 +7,8 @@ description: Make a complete 10–12 minute Deep Time Academy video (history, ge
 
 The reference episode is `video-studio/deeptime/ep01-dating-game/`. **Read its `episode.py` before you start.** Every new scene type you need probably already exists there, so copy and adapt it.
 
+**Continuing EP01?** Its full shot list, art prompts, timing and checklist are in `ep01-dating-game/PRODUCTION_PLAN.md`. Follow that file line by line. Also read the "Current work" section of `/CLAUDE.md`, and update it when you finish a step.
+
 Files:
 - `video-studio/deeptime/dta.py`: the shared animation library (characters, gold titles, labels, logo sting, chalk, props, music, sound effects). Its docstring lists every function.
 - `video-studio/tools/engine.py`: low-level engine (`cam`, `load_bg`, `key_green`, `Timeline`, `sfx`, `clean_voice`, `finish_audio`, `render`).
@@ -190,7 +192,8 @@ Copy `ep01-dating-game/episode.py` and keep its skeleton.
   - `gold_text(f, "TITLE", (W/2, 300), 150, a=…, scale=…, shine=…)` for titles.
   - `label(f, t, t_in, "TEXT", (x, y), bg, fg, size, angle)` for pop-up labels. Use 3 words or fewer, ALL CAPS, and tilt them ±3–6°.
 - **Graphics:**
-  - `BADGE[...]` plus `pop_img` for icons.
+  - `BADGE[...]` plus `pop_img` for icons: heart, house, hourglass, coin, sword, land, scroll, players, strategy, payoff, info.
+  - `chapter_card(t, t0, num, title)` for chapter cards, `payoff_matrix(...)` for 2×2 games, `progress_bar(...)` for the 37% rule and countdowns.
   - `person_glyph` plus `chalk_line` on `board(t)` for chalkboard diagrams.
   - `heart_pts` for hearts, `arrow` for up/down results, `medal_img()` for awards, `reel_strip` for slot machines.
   - Year counters: see `sc_years`.

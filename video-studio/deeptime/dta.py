@@ -12,7 +12,10 @@ What is here (all drawing works on a 1920x1080 RGBA frame `f` at time `t` in sec
   characters  load_cuts(img_dir, names), char(f, name, t, t_in, x, base, h, enter, flip, t_out, phase, walk)
   titles      gold_text(f, text, (cx, cy), size, a, shine, scale, weight, spacing)
   labels      label(f, t, t_in, text, (x, y), bg, fg, size, angle, t_out, face)
-  icons       BADGE["heart"|"house"|"hourglass"], pop_img(f, t, t_in, img, (x, y)), heart_pts(cx, cy, s)
+  icons       BADGE[k] for k in heart house hourglass coin sword land scroll players strategy payoff info,
+              pop_img(f, t, t_in, img, (x, y)), heart_pts(cx, cy, s)
+  long video  chapter_card(t, t0, num, title) -> frame, payoff_matrix(f, t, t_in, labels, cells, highlight),
+              progress_bar(f, frac, mark=0.37, label_txt="37%")
   mood        motes(f, t), darken(f, k, color), spot(f, k), sepia(f, k)
   chalk       chalk_line(d, a, b, frac, color, width), person_glyph(d, x, y, color, s)
   props       medal_img(), arrow(d, x, y, up, color, s), reel_strip(order), SYMS, CELL
@@ -237,10 +240,52 @@ def _badge(kind):
                        (c[0] + 40 * k, c[1] + 58 * k), (c[0] - 40 * k, c[1] + 58 * k), (c[0] - 6 * k, c[1])],
                       fill=CREAM, outline=GOLD)
             d.polygon([(c[0] - 26 * k, c[1] + 54 * k), (c[0] + 26 * k, c[1] + 54 * k), (c[0], c[1] + 20 * k)], fill=GOLD)
+        elif kind == "coin":                       # money
+            for j, dy in enumerate((34, 10, -14)):
+                d.ellipse((c[0] - 56 * k, c[1] + dy * k - 20 * k, c[0] + 56 * k, c[1] + dy * k + 20 * k),
+                          fill=GOLD, outline=(120, 78, 20), width=4 * k)
+            d.ellipse((c[0] - 56 * k, c[1] - 60 * k, c[0] + 56 * k, c[1] - 18 * k), fill=(250, 214, 120),
+                      outline=(120, 78, 20), width=4 * k)
+        elif kind == "sword":                      # armies / war
+            d.polygon([(c[0], c[1] - 78 * k), (c[0] + 14 * k, c[1] - 56 * k), (c[0] + 14 * k, c[1] + 30 * k),
+                       (c[0] - 14 * k, c[1] + 30 * k), (c[0] - 14 * k, c[1] - 56 * k)], fill=CREAM, outline=GOLD)
+            d.rectangle((c[0] - 46 * k, c[1] + 30 * k, c[0] + 46 * k, c[1] + 42 * k), fill=GOLD)
+            d.rectangle((c[0] - 9 * k, c[1] + 42 * k, c[0] + 9 * k, c[1] + 76 * k), fill=(150, 98, 30))
+        elif kind == "land":                       # land / castle
+            d.rectangle((c[0] - 60 * k, c[1] - 20 * k, c[0] + 60 * k, c[1] + 60 * k), fill=GOLD)
+            for x0 in (-60, -24, 12, 48):
+                d.rectangle((c[0] + x0 * k, c[1] - 44 * k, c[0] + (x0 + 14) * k, c[1] - 20 * k), fill=GOLD)
+            d.pieslice((c[0] - 20 * k, c[1] + 14 * k, c[0] + 20 * k, c[1] + 60 * k), 180, 360, fill=(30, 22, 14))
+            d.rectangle((c[0] - 20 * k, c[1] + 36 * k, c[0] + 20 * k, c[1] + 60 * k), fill=(30, 22, 14))
+        elif kind == "scroll":                     # contract / deal
+            d.rectangle((c[0] - 48 * k, c[1] - 56 * k, c[0] + 48 * k, c[1] + 56 * k), fill=CREAM, outline=GOLD, width=4 * k)
+            for yy in (-30, -10, 10, 30):
+                d.line((c[0] - 32 * k, c[1] + yy * k, c[0] + 32 * k, c[1] + yy * k), fill=(150, 120, 80), width=5 * k)
+            d.ellipse((c[0] + 14 * k, c[1] + 30 * k, c[0] + 50 * k, c[1] + 66 * k), fill=BLOOD)
+        elif kind == "players":                    # people
+            for dx, s in ((-36, 0.8), (36, 0.8), (0, 1.0)):
+                hx, hy = c[0] + dx * k, c[1] - 26 * k * s
+                d.ellipse((hx - 18 * k * s, hy - 18 * k * s, hx + 18 * k * s, hy + 18 * k * s), fill=GOLD)
+                d.pieslice((hx - 34 * k * s, hy + 22 * k * s, hx + 34 * k * s, hy + 92 * k * s), 180, 360, fill=GOLD)
+        elif kind == "strategy":                   # chess pawn
+            d.ellipse((c[0] - 22 * k, c[1] - 66 * k, c[0] + 22 * k, c[1] - 22 * k), fill=GOLD)
+            d.polygon([(c[0] - 16 * k, c[1] - 26 * k), (c[0] + 16 * k, c[1] - 26 * k), (c[0] + 34 * k, c[1] + 40 * k),
+                       (c[0] - 34 * k, c[1] + 40 * k)], fill=GOLD)
+            d.rectangle((c[0] - 50 * k, c[1] + 40 * k, c[0] + 50 * k, c[1] + 62 * k), fill=GOLD)
+        elif kind == "payoff":                     # trophy
+            d.pieslice((c[0] - 50 * k, c[1] - 90 * k, c[0] + 50 * k, c[1] + 10 * k), 0, 180, fill=GOLD)
+            d.rectangle((c[0] - 50 * k, c[1] - 60 * k, c[0] + 50 * k, c[1] - 40 * k), fill=GOLD)
+            d.rectangle((c[0] - 10 * k, c[1] + 8 * k, c[0] + 10 * k, c[1] + 40 * k), fill=GOLD)
+            d.rectangle((c[0] - 40 * k, c[1] + 40 * k, c[0] + 40 * k, c[1] + 60 * k), fill=GOLD)
+        elif kind == "info":                       # eye
+            d.chord((c[0] - 70 * k, c[1] - 44 * k, c[0] + 70 * k, c[1] + 44 * k), 0, 360, fill=CREAM, outline=GOLD, width=5 * k)
+            d.ellipse((c[0] - 28 * k, c[1] - 28 * k, c[0] + 28 * k, c[1] + 28 * k), fill=(40, 110, 160))
+            d.ellipse((c[0] - 12 * k, c[1] - 12 * k, c[0] + 12 * k, c[1] + 12 * k), fill=(10, 10, 10))
     return supersample(draw, (240, 240))
 
 
-BADGE = {k: _badge(k) for k in ["heart", "house", "hourglass"]}
+BADGE = {k: _badge(k) for k in ["heart", "house", "hourglass", "coin", "sword", "land", "scroll", "players",
+                                "strategy", "payoff", "info"]}
 
 
 def pop_img(f, t, t_in, im, xy, s0=0.2):
@@ -505,3 +550,68 @@ def fx_hit():
     return b
 
 
+
+
+# ---------------------------------------------------------------- long-video helpers (added for 10-12 min episodes)
+def chapter_card(t, t0, num, title, dur=2.4):
+    """Full-frame chapter card: black + gold motes, 'CHAPTER N' in gold, title in cream. Show it in a ~2.5 s gap.
+    t0 = when the card starts. Returns a frame. Pair with sound: whoosh at t0-0.3, boom*0.5 + shimmer at t0+0.3."""
+    u = t - t0
+    f = Image.new("RGBA", (W, H), (8, 7, 6, 255))
+    y, x = np.ogrid[0:H:4, 0:W:4]
+    m = np.exp(-(((x - W / 2) / 760) ** 2 + ((y - H / 2) / 360) ** 2)) * 60
+    f.alpha_composite(Image.fromarray(np.dstack([m, m * 0.62, m * 0.25, m * 2.2]).clip(0, 255).astype(np.uint8),
+                                      "RGBA").resize((W, H), Image.BILINEAR))
+    motes(f, t, alpha=150)
+    v = clamp01(u / 0.35)
+    gold_text(f, f"CHAPTER {num}", (W / 2, H / 2 - 70), 72, a=v, scale=1.1 - 0.1 * ease(v), weight="Bold", spacing=8)
+    d = ImageDraw.Draw(f)
+    w_ = 300 * ease(clamp01((u - 0.2) / 0.5))
+    d.line((W / 2 - w_, H / 2 - 12, W / 2 + w_, H / 2 - 12), fill=(190, 30, 30), width=4)
+    if u > 0.35:
+        a = int(255 * clamp01((u - 0.35) / 0.4))
+        d.text((W / 2, H / 2 + 60), title, font=cinzel(62, "Bold"), fill=CREAM + (a,), anchor="mm")
+    if u > dur - 0.35:
+        darken(f, (u - (dur - 0.35)) / 0.35)
+    return f
+
+
+def payoff_matrix(f, t, t_in, labels=("COOPERATE", "BETRAY"), cells=None, highlight=None, x=W / 2, y=560, size=640):
+    """Animated 2x2 game board. cells = {(row, col): ("+3", "+3")} (row player first). highlight = (row, col) to
+    glow gold. The board builds cell by cell from t_in (0.25 s apart)."""
+    if t < t_in:
+        return
+    cells = cells or {(0, 0): ("WIN", "WIN"), (0, 1): ("LOSE", "BIG WIN"), (1, 0): ("BIG WIN", "LOSE"), (1, 1): ("LOSE", "LOSE")}
+    d = ImageDraw.Draw(f)
+    s = size / 2
+    k = ease_out_back(clamp01((t - t_in) / 0.4))
+    x0, y0 = x - s * k, y - s * k
+    d.rounded_rectangle((x0 - 8, y0 - 8, x0 + size * k + 8, y0 + size * k + 8), 18, fill=(20, 14, 8, 230), outline=GOLD, width=5)
+    if k < 0.98:
+        return
+    for (r, c), (a, b) in cells.items():
+        ti = t_in + 0.4 + 0.25 * (r * 2 + c)
+        if t < ti:
+            continue
+        cx0, cy0 = x0 + c * s, y0 + r * s
+        glow = highlight == (r, c) and int(t * 4) % 2 == 0
+        d.rounded_rectangle((cx0 + 10, cy0 + 10, cx0 + s - 10, cy0 + s - 10), 14,
+                            fill=(90, 66, 20) if glow else (40, 30, 18), outline=GOLD if glow else (110, 80, 40), width=4)
+        d.text((cx0 + s / 2, cy0 + s * 0.38), a, font=font(46), fill=(120, 190, 255), anchor="mm")
+        d.text((cx0 + s / 2, cy0 + s * 0.64), b, font=font(46), fill=(255, 130, 150), anchor="mm")
+    for i, lab in enumerate(labels):                     # row labels (left) and column labels (top)
+        d.text((x0 - 24, y0 + s * (i + 0.5)), lab, font=font(40), fill=(120, 190, 255), anchor="rm")
+        d.text((x0 + s * (i + 0.5), y0 - 30), lab, font=font(40), fill=(255, 130, 150), anchor="mm")
+
+
+def progress_bar(f, frac, x=W / 2, y=930, w=1200, mark=None, label_txt=None):
+    """Gold progress bar (0..1). mark = fraction to draw a red marker at (e.g. 0.37 for the 37% rule)."""
+    d = ImageDraw.Draw(f)
+    d.rounded_rectangle((x - w / 2, y - 26, x + w / 2, y + 26), 26, fill=(20, 14, 8, 220), outline=GOLD, width=4)
+    if frac > 0:
+        d.rounded_rectangle((x - w / 2 + 6, y - 20, x - w / 2 + 6 + (w - 12) * clamp01(frac), y + 20), 20, fill=GOLD)
+    if mark is not None:
+        mx = x - w / 2 + w * mark
+        d.line((mx, y - 46, mx, y + 46), fill=(220, 40, 40), width=6)
+        if label_txt:
+            d.text((mx, y - 70), label_txt, font=font(48), fill=CREAM, anchor="mm", stroke_width=4, stroke_fill=(30, 20, 10))
