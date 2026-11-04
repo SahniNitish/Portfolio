@@ -309,5 +309,6 @@ cd /home/user/Portfolio && git add video-studio && git commit -m "Deep Time Acad
 | `while read` loop skips lines / gets 404s | ffmpeg inside the loop swallows stdin. Use `ffmpeg -nostdin` and `curl ... </dev/null`, or loop over `$(seq ...)` |
 | Figma `generate_image` says "Service Unavailable" / "Image generation failed" / times out | Temporary. Retry the same prompt; failures cost nothing. The two tool calls in one message are independent, so the others still succeed |
 | Audio URLs differ by date | `audio_url` contains the date (`tasks/2026-11-04/...`). Store the full URL in `audio/urls/ids.txt` when voicing across days |
+| Peak above -1 dBFS after the render | AAC encoding adds about +1 dB on loud sound effects. Re-mux the audio from `_mix.wav` without re-rendering the video: `ffmpeg -i video.mp4 -i _mix.wav -map 0:v -map 1:a -c:v copy -af "alimiter=limit=0.70:level=disabled" -c:a aac -b:a 256k -shortest out.mp4`, then measure with `ebur128=peak=true` (aim -14 to -16 LUFS, peak below -1) |
 | Full render takes hours | Use `render_parallel` (already the default in `episode.py`): 16 chunks on 4 cores, about 2 s per video second |
 | Render starts with missing voice | `episode.py` refuses (silent placeholders exist only for previews). `ALLOW_PLACEHOLDER=1` is for layout tests only, never for a deliverable |

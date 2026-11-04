@@ -9,10 +9,8 @@ This repo is the user's YouTube production studio. Everything lives in `video-st
 | LunchBox Express | Stick-figure "what if" stories | `make-episode` | `video-studio/episodes/` |
 
 ## Current work (update this section when it changes)
-- **Deep Time Academy, Game Theory #1 "The Dating Game"** (`video-studio/deeptime/ep01-dating-game/`): **read `PRODUCTION_PLAN.md` "STATUS" first.**
-  - Done: revised 119-line script (`script.md`), all art, the full animation code for every line, voice for lines 1-73 and 75, a partial preview video.
-  - **Blocked on voice:** line 74 and lines 76-119 (45 lines, about 3,700 credits). The Fish *connector* spends package credits (plan "free", about 23 left). The user's extra $5 is *API* balance, so it only works through the REST API with `FISH_AUDIO_API_KEY` as an environment secret (`tools/voice_missing.py`). Ask the user which route they want (API key or top-up).
-  - After voicing: transcription check, `python episode.py` (about 30 min, refuses to run with missing voice), checks, thumbnails, metadata, send the video.
+- **Deep Time Academy, Game Theory #1 "The Dating Game"** (`video-studio/deeptime/ep01-dating-game/`): **FINISHED and delivered** (12:58, thumbnails and `metadata.json` included; see `PRODUCTION_PLAN.md` "STATUS"). Wait for the user's feedback; edits are cheap (re-render about 30 min, re-voice a line about 80-170 credits).
+- **Next:** Game Theory #2, "a game played by entire nations" (teased in the outro). Script first, show it, get approval before spending credits. The Fish *connector* spends package credits (the user topped up a new account with 8,000 on 2026-11-04; about 3,900 were left). Their API balance only works through the REST API with `FISH_AUDIO_API_KEY` (`tools/voice_missing.py`).
 
 ## What the user likes (keep doing this)
 - **"Animated history" style:** flat 2D cartoon characters that move (slide in, hop, land, breathe), animated maps and diagrams, pop-up labels, gold titles with a shine. **Not** painted still images. They rejected that early on.

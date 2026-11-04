@@ -1,22 +1,11 @@
 # EP01 "The Dating Game": production plan for the full 11-minute video
 
-## STATUS (2026-11-04, end of session 2): READ THIS FIRST
-- **Script:** the user supplied a REVISED script for lines 15-119 (jokes after hard explanations, modern anchors, binary comment question). It is in `script.md` and `lines.txt` (119 lines). Lines 1-14 are unchanged.
-- **Voice (Fish connector, WNBA VOICEOVER, drama-3):** lines 1-73 and 75 are DONE (`audio/lN.mp3` + `.wav`, transcription-checked). **Missing: line 74 and lines 76-119 (45 lines, about 3,700 bytes of text).** The connector ran out of PACKAGE credits at line 74. The user's extra $5 is API balance, which the connector cannot spend.
-- **Art:** DONE. 14 new images are in `img/` (rome, castle, china, india, market, 1973 office, skinner lab, doors, families_deal, nash_board, peacock, fox, man_phone_car, robots).
-- **Animation:** DONE for all 119 lines in `episode.py` (about 1,770 lines: one `sc_*` function per scene, 8 chapter cards, about 600 sound cues in `FXT`, music rules). It was checked on contact sheets for every line. Helpers use script line numbers: `AT(n, frac)`, `SG(t, n, m)`, `LS(n)`, `EN(n)`, `lab(...)`.
-- **A partial preview** (opening + chapters 1-4, about 7:35) was rendered as `dating_game_preview_part1.mp4` and sent to the user.
-- **Render:** `python episode.py` renders the full video in 16 parallel chunks on 4 cores (about 2 s per video second, so about 25-30 min). It REFUSES to run while any line has no real voice (silent placeholders are used only for layout previews).
-
-### To finish (about 40 minutes of work)
-1. **Get the 45 missing lines voiced.** Ask the user which route they want:
-   - **A. API key route (uses their $5):** they add `FISH_AUDIO_API_KEY` as an environment secret (cloud environment menu in the session title bar > Edit; a NEW session picks it up). Then run `python tools/voice_missing.py deeptime/ep01-dating-game --dry-run`, then without `--dry-run`. The script tries model `drama-3` first and prints which model answered. If it is not drama-3 the new lines may sound a bit different from lines 1-75: tell the user.
-   - **B. Top-up route:** the user buys package credits on fish.audio; then call the connector's `text_to_speech` once per missing line (voice `fb7ec16ca51a45a5a4db881244d7990a`, model `drama-3`, text exactly as in `lines.txt`), save each result's full `audio_url` as `<line> <url>` in `audio/urls/ids.txt`, and run `python tools/fetch_fish_audio.py deeptime/ep01-dating-game`.
-   Check `get_credit_balance` first. Never re-call text_to_speech to re-download.
-2. Check every new line by transcription (skill step 4). `lines.txt` tags like `[dry]`, `[deadpan]` must not be read aloud.
-3. `python tools/preview.py deeptime/ep01-dating-game 74 119` to re-check timing, then render (above). Watch `chunk n/16 done` in the log.
-4. Checks: duration 10-13 min, loudness about -14 to -16 LUFS, peak below -1, 5-6 sample frames. Fix anything odd.
-5. Thumbnails (2 variants), `metadata.json` (title, description with real chapter times from `CARD_START`, sources, tags), commit, push, and send the video with `SendUserFile`.
+## STATUS (2026-11-04): EPISODE 1 IS FINISHED. Read this first.
+- **Final video:** `dating_game_full_v1.mp4` (git-ignored, about 176 MB): 12:58, 1920x1080, 30 fps, -15.9 LUFS, peak -1.7 dBFS. All 119 lines are voiced (Fish Audio, WNBA VOICEOVER, drama-3; every line transcription-checked; line 80 re-voiced because "Betraying" lost its first syllable).
+- **Also done:** `thumb_a.jpg` (recommended) and `thumb_b.jpg`, `metadata.json` (title, description with chapters from the real timeline, sources, tags). Chapter times: 0:00 intro, 1:25, 2:23, 3:46 (approx.), then 7:24, 9:16, 10:43, 11:36 for chapters 5-8 (exact list in `metadata.json`).
+- **Audio note:** the render writes a master at about -15.4 LUFS but AAC encoding added about +1 dB on two loud sound effects (6:07 and 11:27). After rendering, re-mux with `ffmpeg -i video.mp4 -i _mix.wav -map 0:v -map 1:a -c:v copy -af "alimiter=limit=0.70:level=disabled" -c:a aac -b:a 256k -shortest out.mp4` and re-measure (target peak below -1 dBFS). This is now a pitfall row in the skill.
+- **What the user may still ask for:** shorter cut (pauses can be tightened: default gap 0.45 s, chapter-card gaps 2.6 s; the video is about 1 minute over the 10-12 min target), different thumbnail text, music changes, re-voiced lines (about 80-170 credits each), a Shorts cut.
+- **Next episode:** "Game Theory #2: a game played by entire nations" (teased in the outro). Use the skill `make-deeptime-episode`: script first, show it, wait for approval, check Fish credits (connector credits, NOT the API balance) before voicing.
 
 *The detailed shot list below was written for the FIRST version of the script. The code in `episode.py` is now the source of truth; use the list only as background.*
 
