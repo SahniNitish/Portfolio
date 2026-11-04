@@ -13,3 +13,4 @@ deeptime/**/audio/l*.wav
 deeptime/**/audio/placeholder/
 deeptime/**/dta_parts_*/
 deeptime/**/_test_slice.mp4
+_premaster.wav
