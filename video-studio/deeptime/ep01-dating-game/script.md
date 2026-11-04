@@ -102,7 +102,7 @@ Lines 1-14 are voiced and unchanged. Lines 15-119 are the revised script (jokes 
 77. So each player thinks: "If I can't be sure of you... maybe I should protect myself."
 78. And when both think that way... both lose.
 79. In dating, cooperating means opening up. Investing. Committing.
-80. Betraying means keeping one foot out the door — and the other foot on the apps.
+80. [dry] Betraying... means keeping one foot out the door — and the other foot on the apps.
 81. [serious] And when both people play it safe... the relationship never really starts.
 82. So how do you escape the trap?
 83. In nineteen eighty, the political scientist Robert Axelrod held a tournament. Computer programs played the prisoner's dilemma against each other, again and again.

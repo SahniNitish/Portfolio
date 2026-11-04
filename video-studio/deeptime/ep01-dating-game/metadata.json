@@ -1,0 +1,42 @@
+{
+  "title": "The Math of Dating: Who Should Move First? | Game Theory #1",
+  "title_alternatives": [
+    "Game Theory #1: Why Dating Apps Feel Like a Casino",
+    "The Side That Waits Always Loses? The Math of Dating"
+  ],
+  "description": "Every night, millions of people play a game nobody ever explained to them: the dating game. In 1962, two mathematicians worked out its rules, and what they found has a twist.\n\nWho should make the first move: you, or the one who waits? Why does a dating app feel like a casino? And when should you stop searching? Game theory has answers.\n\nTEAM \"make the first move\" or TEAM \"wait and see\"? Fight it out in the comments.\n\nCHAPTERS\n0:00 The dating game (intro)\n1:24 For most of history, you didn't play\n2:20 What is a game?\n3:40 The algorithm of love (Gale & Shapley)\n5:44 Signals: why cheap words fail\n7:24 The trust trap (prisoner's dilemma)\n9:16 The casino in your pocket\n10:43 When to stop searching (the 37% rule)\n11:36 How to win the dating game\n\nSOURCES\n- Gale & Shapley, \"College Admissions and the Stability of Marriage,\" American Mathematical Monthly, 1962\n- Nobel Prize in Economics 2012: Alvin Roth and Lloyd Shapley\n- von Neumann & Morgenstern, Theory of Games and Economic Behavior, 1944; John Nash, 1950\n- Michael Spence, \"Job Market Signaling,\" 1973; Amotz Zahavi, handicap principle, 1975\n- Prisoner's dilemma (RAND, 1950); Robert Axelrod's tournaments, 1980\n- B. F. Skinner, schedules of reinforcement, 1950s\n- The secretary problem (popularized by Martin Gardner, 1960)\n\nInspired by Professor Jiang Xueqin's Predictive History lectures.\nAnimated with AI-assisted artwork and narration.\n\nSubscribe to Deep Time Academy for the next move: a game played by entire nations.\n\n#gametheory #dating #history",
+  "tags": [
+    "game theory",
+    "dating game theory",
+    "stable marriage problem",
+    "gale shapley algorithm",
+    "prisoner's dilemma",
+    "tit for tat",
+    "signaling theory",
+    "handicap principle",
+    "secretary problem",
+    "37 percent rule",
+    "dating app psychology",
+    "dating apps casino",
+    "nobel prize economics 2012",
+    "history of marriage",
+    "deep time academy"
+  ],
+  "thumbnails": [
+    "thumb_a.jpg (WHO MOVES FIRST?)",
+    "thumb_b.jpg (THE SIDE THAT WAITS ALWAYS LOSES?)"
+  ],
+  "recommended_thumbnail": "thumb_a.jpg",
+  "length_seconds": 778.1,
+  "chapter_times": [
+    "0:00 The dating game (intro)",
+    "1:24 For most of history, you didn't play",
+    "2:20 What is a game?",
+    "3:40 The algorithm of love (Gale & Shapley)",
+    "5:44 Signals: why cheap words fail",
+    "7:24 The trust trap (prisoner's dilemma)",
+    "9:16 The casino in your pocket",
+    "10:43 When to stop searching (the 37% rule)",
+    "11:36 How to win the dating game"
+  ]
+}

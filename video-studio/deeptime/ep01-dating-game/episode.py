@@ -1125,7 +1125,7 @@ def sc_axelrod(t):                                # 83-84
         cx = 960 - cw * sc / 2 + (x0 + x1) / 2 * sc; cy = 1040 - hh + top * sc - 8
         k = ease_out_back(clamp01((t - AT(84, 0.5)) / 0.4), 2.0)
         crown(ImageDraw.Draw(f), cx, cy - 60 * (1 - k), 1.3 * max(k, 0.05))
-    gtitle(f, t, AT(84, 0.62), "TIT FOR TAT", 270, 140)
+    gtitle(f, t, AT(84, 0.62), "TIT FOR TAT", 305, 140)
     return f
 
 
