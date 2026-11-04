@@ -7,3 +7,9 @@ __pycache__/
 _preview.jpg
 assets/brand/_*
 _mix.wav
+
+# Deep Time Academy: regenerable audio (rebuild with tools/fetch_fish_audio.py)
+deeptime/**/audio/l*.wav
+deeptime/**/audio/placeholder/
+deeptime/**/dta_parts_*/
+deeptime/**/_test_slice.mp4

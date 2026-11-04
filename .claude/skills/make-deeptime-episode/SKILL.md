@@ -176,7 +176,7 @@ Copy `ep01-dating-game/episode.py` and keep its skeleton.
 - Use 0.7–1.0 s after a reveal, about 2.5 s before a new chapter (for a chapter card) and 3.5 s after the last line (end card).
 - The title line gets about 4.6 s, which is where the logo sting plays: `STING = END(title_idx) + 0.9`.
 
-**3. Helpers.**
+**3. Helpers.** (ep01 also defines script-line-number versions, which read like the script: `AT(n, frac)`, `SG(t, n, m)`, `LS(n)`, `EN(n)`, `lab(f, t, n, frac, text, xy, **kw)`, `gtitle(...)`. Prefer them: no off-by-one mistakes.)
 - `seg(t, i)` is 0→1 progress through line i.
 - `at(i, frac)` is the time at a fraction of line i. **Time every pop-up to the word it matches**: if the word comes at about 60% of the sentence, use `at(i, 0.6)`.
 
@@ -246,7 +246,7 @@ cd video-studio
 - Labels covering faces.
 - Empty or frozen shots.
 
-**Render** in the background. It takes about **3–4 seconds of render per second of video**, so an 11-minute episode takes about 35–45 minutes:
+**Render** in the background. `episode.py` (from ep01) renders in 16 parallel chunks on 4 cores: about **2 seconds per second of video**, so an 11-minute episode takes about 25–30 minutes (a single process takes 3–4 s per second):
 ```bash
 cd deeptime/epNN-slug && (nohup ~/venvs/render/bin/python episode.py > /tmp/render.log 2>&1; echo EXIT $? >> /tmp/render.log)   # run_in_background
 ```
@@ -305,3 +305,9 @@ cd /home/user/Portfolio && git add video-studio && git commit -m "Deep Time Acad
 | Fish credits run out | Stop, tell the user the cost and the balance. Never re-call TTS just to re-download |
 | Cinzel download blocked on GitHub | Already in the repo; mirror at `cdn.jsdelivr.net/gh/google/fonts@main/ofl/cinzel/` |
 | `_scaled` NameError after editing dta | Module-level caches (`_scaled`, `_gold`, `_lab`) must stay in `dta.py` |
+| Fish connector says "Insufficient credits" although the user "added $5" | The connector spends PACKAGE credits; the $5 is API balance. Use `tools/voice_missing.py` with `FISH_AUDIO_API_KEY` (environment secret) or ask for a credit top-up. Check `get_credit_balance` BEFORE starting and compare with the byte count of the lines |
+| `while read` loop skips lines / gets 404s | ffmpeg inside the loop swallows stdin. Use `ffmpeg -nostdin` and `curl ... </dev/null`, or loop over `$(seq ...)` |
+| Figma `generate_image` says "Service Unavailable" / "Image generation failed" / times out | Temporary. Retry the same prompt; failures cost nothing. The two tool calls in one message are independent, so the others still succeed |
+| Audio URLs differ by date | `audio_url` contains the date (`tasks/2026-11-04/...`). Store the full URL in `audio/urls/ids.txt` when voicing across days |
+| Full render takes hours | Use `render_parallel` (already the default in `episode.py`): 16 chunks on 4 cores, about 2 s per video second |
+| Render starts with missing voice | `episode.py` refuses (silent placeholders exist only for previews). `ALLOW_PLACEHOLDER=1` is for layout tests only, never for a deliverable |

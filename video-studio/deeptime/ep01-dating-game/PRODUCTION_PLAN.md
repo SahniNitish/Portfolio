@@ -1,5 +1,26 @@
 # EP01 "The Dating Game": production plan for the full 11-minute video
 
+## STATUS (2026-11-04, end of session 2): READ THIS FIRST
+- **Script:** the user supplied a REVISED script for lines 15-119 (jokes after hard explanations, modern anchors, binary comment question). It is in `script.md` and `lines.txt` (119 lines). Lines 1-14 are unchanged.
+- **Voice (Fish connector, WNBA VOICEOVER, drama-3):** lines 1-73 and 75 are DONE (`audio/lN.mp3` + `.wav`, transcription-checked). **Missing: line 74 and lines 76-119 (45 lines, about 3,700 bytes of text).** The connector ran out of PACKAGE credits at line 74. The user's extra $5 is API balance, which the connector cannot spend.
+- **Art:** DONE. 14 new images are in `img/` (rome, castle, china, india, market, 1973 office, skinner lab, doors, families_deal, nash_board, peacock, fox, man_phone_car, robots).
+- **Animation:** DONE for all 119 lines in `episode.py` (about 1,770 lines: one `sc_*` function per scene, 8 chapter cards, about 600 sound cues in `FXT`, music rules). It was checked on contact sheets for every line. Helpers use script line numbers: `AT(n, frac)`, `SG(t, n, m)`, `LS(n)`, `EN(n)`, `lab(...)`.
+- **A partial preview** (opening + chapters 1-4, about 7:35) was rendered as `dating_game_preview_part1.mp4` and sent to the user.
+- **Render:** `python episode.py` renders the full video in 16 parallel chunks on 4 cores (about 2 s per video second, so about 25-30 min). It REFUSES to run while any line has no real voice (silent placeholders are used only for layout previews).
+
+### To finish (about 40 minutes of work)
+1. **Get the 45 missing lines voiced.** Ask the user which route they want:
+   - **A. API key route (uses their $5):** they add `FISH_AUDIO_API_KEY` as an environment secret (cloud environment menu in the session title bar > Edit; a NEW session picks it up). Then run `python tools/voice_missing.py deeptime/ep01-dating-game --dry-run`, then without `--dry-run`. The script tries model `drama-3` first and prints which model answered. If it is not drama-3 the new lines may sound a bit different from lines 1-75: tell the user.
+   - **B. Top-up route:** the user buys package credits on fish.audio; then call the connector's `text_to_speech` once per missing line (voice `fb7ec16ca51a45a5a4db881244d7990a`, model `drama-3`, text exactly as in `lines.txt`), save each result's full `audio_url` as `<line> <url>` in `audio/urls/ids.txt`, and run `python tools/fetch_fish_audio.py deeptime/ep01-dating-game`.
+   Check `get_credit_balance` first. Never re-call text_to_speech to re-download.
+2. Check every new line by transcription (skill step 4). `lines.txt` tags like `[dry]`, `[deadpan]` must not be read aloud.
+3. `python tools/preview.py deeptime/ep01-dating-game 74 119` to re-check timing, then render (above). Watch `chunk n/16 done` in the log.
+4. Checks: duration 10-13 min, loudness about -14 to -16 LUFS, peak below -1, 5-6 sample frames. Fix anything odd.
+5. Thumbnails (2 variants), `metadata.json` (title, description with real chapter times from `CARD_START`, sources, tags), commit, push, and send the video with `SendUserFile`.
+
+*The detailed shot list below was written for the FIRST version of the script. The code in `episode.py` is now the source of truth; use the list only as background.*
+
+
 **Status (2026-11-04):**
 - The opening (lines 1–14) is **done**: voiced with WNBA VOICEOVER, animated and approved. Its render is `dating_game_v2.mp4`.
 - Lines 15–119 have a written script (`script.md`) but are **not voiced or animated yet**.

@@ -12,3 +12,108 @@ If every man and every woman ranks who they want, can we pair everyone up, so th
 The side that makes the first move gets its best possible match. The side that waits... gets its worst.
 [curious] So who should make the first move? And why does a dating app feel less like a love story... and more like a casino?
 To find out, we have to stop thinking like romantics... and start thinking like game theorists.
+[curious] But first — a quick history check. Who used to play this game?
+[dry] For most of human history... it wasn't you.
+In ancient Rome, in medieval Europe, in imperial China, across India — marriage was a merger between two families.
+It joined land. It joined money. It joined armies.
+[dry humor] Your wedding was a board meeting. Love was a nice bonus... not the point.
+Only in the last few centuries did a wild idea catch on: you should pick your own partner. For love.
+[serious] And the moment the choice moved from families to individuals... marriage stopped being a treaty — and became a market.
+A market with competition, bargaining... and strategy.
+And wherever there's strategy, there's game theory.
+Game theory is the mathematics of decisions that depend on other people's decisions.
+It took off in nineteen forty-four, with a book by John von Neumann and Oskar Morgenstern.
+A few years later, a young mathematician named John Nash — yes, the guy from A Beautiful Mind — gave it its most famous idea.
+Every game has four parts.
+Players. The people making choices.
+Strategies. The moves each player can make.
+Payoffs. What each player gets at the end.
+And information. What each player knows... and what they don't.
+Now look at your love life through those four lenses.
+The players: you... and everyone else on the market.
+The strategies: approach or wait. Commit, or keep your options open. Tell the truth... or show only your highlight reel.
+The payoffs: love, security, family, status... or heartbreak.
+And the information? [deadpan] Catastrophic. You never really know what the other person is thinking. Nobody does.
+That's exactly the kind of mess game theory was built to clean up.
+So — back to Gale and Shapley.
+Imagine four men and four women. Everyone secretly ranks everyone on the other side.
+Step one: every man proposes to the woman at the top of his list.
+Step two: each woman keeps her favorite offer — but only as a "maybe." The mathematical version of "let's see where this goes."
+Step three: every rejected man proposes to the next name on his list.
+And if a woman gets a better offer... she drops the "maybe" and trades up. No hard feelings. It's just math.
+Round after round, the rejections fall like dominoes... until nobody is left out.
+The result is what mathematicians call a stable match.
+No man and woman who both prefer each other over the partners they ended up with. Nobody has a reason to run off.
+[serious] And Gale and Shapley proved this always works. Every time. For any number of people.
+But here's the twist we promised.
+The side that proposes gets the best partner it could get in any stable match.
+The side that waits... gets the worst.
+And the math doesn't care who's a man and who's a woman. It only cares who moves first.
+[curious] One more secret. The proposing side can't gain anything by lying about what it wants.
+But the waiting side sometimes can... by turning down offers it would actually accept.
+Which means: in nineteen sixty-two, mathematicians formally proved your grandmother right about playing hard to get.
+And this isn't just theory. For decades, a version of this algorithm has matched tens of thousands of new American doctors to hospitals every year.
+It assigns students to high schools in New York City.
+And in twenty twelve, it won Lloyd Shapley and Alvin Roth the Nobel Prize in Economics.
+But real dating has a problem the algorithm pretends doesn't exist.
+In the algorithm, everyone knows exactly what they want.
+In real life... everyone is hiding information.
+Is he serious, or just passing time? Is she interested, or just being polite? Is anyone actually over their ex?
+Game theorists call this a signaling game. And empty words have a name too... "cheap talk."
+In nineteen seventy-three, the economist Michael Spence asked why employers care so much about degrees.
+His answer: a degree is hard to get. And a signal only works if it's costly to fake.
+Nature cracked this problem long before economists did.
+Look at the peacock. His tail is heavy, slow... and basically a dinner bell for predators.
+That's exactly why it works. Only a truly healthy bird can afford to carry it. A flex you cannot fake.
+Biologists call this the handicap principle.
+Now think about dating. Anyone can type "I love you." It costs nothing. You can send it to nine people before breakfast.
+But driving three hours to see someone? Remembering what they told you a month ago? Introducing them to your family?
+Those are costly signals. And costly signals are the ones we believe.
+[deadpan] Which is why the copy-paste compliments and the endless "hey"... are worth exactly what they cost you. Nothing.
+Even when two people like each other... there's another trap waiting.
+In nineteen fifty, researchers at the RAND Corporation invented a game that still haunts economists. The prisoner's dilemma.
+Two players. Each can cooperate... or betray.
+If both cooperate, both win. If one betrays, the betrayer wins big — and the loyal one loses everything.
+So each player thinks: "If I can't be sure of you... maybe I should protect myself."
+And when both think that way... both lose.
+In dating, cooperating means opening up. Investing. Committing.
+Betraying means keeping one foot out the door — and the other foot on the apps.
+[serious] And when both people play it safe... the relationship never really starts.
+So how do you escape the trap?
+In nineteen eighty, the political scientist Robert Axelrod held a tournament. Computer programs played the prisoner's dilemma against each other, again and again.
+The winner was one of the simplest strategies entered. Two words: "tit for tat."
+Start by cooperating. Then simply copy whatever the other player did last time.
+Be nice. Respond quickly. Forgive quickly. [pause] In short: be a good partner... with a good memory.
+The lesson is powerful. Betrayal can pay in a single round. But in a game that repeats... trust wins.
+Axelrod called it "the shadow of the future." When you expect to meet again tomorrow, you behave better today.
+And a relationship... is the ultimate repeated game.
+Which brings us to the dating app.
+For the first time in history, you can browse thousands of possible partners... without leaving your bed.
+[dry] Sounds like a dream. Game theory says: it's a trap.
+First — when options feel endless, the shadow of the future disappears. Why invest in one person when the next swipe might be "the one"? Spoiler: so is the one after that.
+Second — attention piles up at the top. A small share of profiles collects a huge share of the likes... while most people hear silence.
+And third... look at how it feels.
+[curious] Swipe. Nothing. Swipe. Nothing. Swipe... a match! Again. And again. And again.
+In the nineteen fifties, the psychologist B. F. Skinner found that rewards arriving at random keep animals pressing a lever longer than anything else.
+It's the exact trick inside slot machines. And now... inside your phone.
+So the app's game and your game are not the same game.
+You want to find someone and leave. The app wins when you keep playing. And the house always wins... unless you know the rules.
+So... how much searching is enough?
+Mathematicians have an answer for that too. It's called the secretary problem, and it became famous in nineteen sixty.
+Imagine meeting people one at a time. Once you say no, you can't go back. No re-swiping your ex.
+The best strategy? Spend the first thirty-seven percent of your search just looking. Don't commit to anyone.
+After that, choose the very next person who is better than everyone you've seen so far.
+It doesn't guarantee the perfect partner. But no other strategy gives you a better shot at the very best one.
+[curious] But the real lesson isn't the number. It's this: searching forever... is also a losing strategy. At some point, "good enough" is the win.
+So let's put the whole game together.
+Lesson one, from Gale and Shapley: the side that makes the first move does better. Don't just wait. Propose.
+Lesson two, from the peacock: words are cheap. Send signals that cost something — and trust the signals other people pay for.
+Lesson three, from Axelrod: start with trust. Respond fast. Forgive fast. Play the long game.
+Lesson four, from the secretary problem: explore... but know when to stop.
+[serious] For thousands of years, this game was played for you — at dinner tables you were never invited to.
+Now, for the first time, we play it ourselves. Millions of us. Every single night.
+The rules were never written down.
+[mysterious] But now... you know a few of them. Use them.
+[curious] So — team "make the first move," or team "wait and see"? Fight it out in the comments.
+Next time on Game Theory, we leave romance behind... and step into a game played by entire nations.
+Subscribe to Deep Time Academy, so you never miss the next move.
