@@ -1,0 +1,32 @@
+In 1962, two mathematicians proved something that sounds like a dating cheat code: when everyone ranks everyone, there is a way to pair people up so that nobody has a reason to run off together. The twist? The side that makes the first move gets the best partner it could get. The side that waits gets the worst.
+
+This is the algorithm of love: how it works, why it won a Nobel Prize, and what it really says about who should make the first move. Plus why a dating app can feel like a casino, and when to stop searching.
+
+Team "make the first move" or team "wait and see"? Fight it out in the comments.
+
+CHAPTERS
+0:00 The dating game (intro)
+1:24 For most of history, you didn't play
+2:20 What is a game?
+3:40 The algorithm of love (Gale & Shapley)
+5:44 Signals: why cheap words fail
+7:24 The trust trap (prisoner's dilemma)
+9:16 The casino in your pocket
+10:43 When to stop searching (the 37% rule)
+11:36 How to win the dating game
+
+SOURCES
+- Gale & Shapley, "College Admissions and the Stability of Marriage," American Mathematical Monthly, 1962
+- Nobel Prize in Economics 2012: Alvin Roth and Lloyd Shapley
+- von Neumann & Morgenstern, Theory of Games and Economic Behavior, 1944; John Nash, 1950
+- Michael Spence, "Job Market Signaling," 1973; Amotz Zahavi, handicap principle, 1975
+- Prisoner's dilemma (RAND, 1950); Robert Axelrod's tournaments, 1980
+- B. F. Skinner, schedules of reinforcement, 1950s
+- The secretary problem (popularized by Martin Gardner, 1960)
+
+Inspired by Professor Jiang Xueqin's Predictive History lectures.
+Animated with AI-assisted artwork and narration.
+
+Next on Game Theory: a game played by entire nations. Subscribe to Deep Time Academy so you never miss the next move.
+
+#gametheory #dating #algorithm
