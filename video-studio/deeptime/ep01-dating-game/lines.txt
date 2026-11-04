@@ -1,0 +1,14 @@
+(curious) Every night, millions of people around the world play a game.
+(serious) A game they never agreed to play.
+There's no rulebook. No referee. And nobody tells you the score.
+(serious) But the stakes? Your happiness. Your family. Your entire future.
+(mysterious) Welcome... to the dating game.
+(curious) Now, here's the strange part.
+Mathematicians worked out the rules of this game more than sixty years ago.
+In nineteen sixty-two, two American mathematicians, David Gale and Lloyd Shapley, asked a simple question.
+If every man and every woman ranks who they want, can we pair everyone up, so that no two people would rather run off together?
+(excited) The answer was yes. And half a century later, that idea helped win a Nobel Prize.
+(mysterious) But hidden inside their answer... was a twist.
+The side that makes the first move gets its best possible match. The side that waits... gets its worst.
+(curious) So who should make the first move? And why does a dating app feel less like a love story... and more like a casino?
+To find out, we have to stop thinking like romantics... and start thinking like game theorists.

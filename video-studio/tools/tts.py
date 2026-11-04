@@ -1,6 +1,7 @@
 """Voice every line of an episode's lines.txt into audio/l1.wav, l2.wav, ...
 
-Voice engine, best first: ElevenLabs when ELEVENLABS_API_KEY is set, else Kokoro (free, offline,
+Voice engine, best first: Fish Audio when FISH_AUDIO_API_KEY is set (voice: FISH_VOICE_ID, model: FISH_MODEL,
+default "s1"), then ElevenLabs when ELEVENLABS_API_KEY is set, else Kokoro (free, offline,
 natural; run with a Python 3.12 env that has `pip install kokoro soundfile`), else Piper.
 ElevenLabs also saves audio/lN.align.json (per-character timings) for exact caption/card sync.
 
@@ -17,6 +18,31 @@ PIPER_MODEL = os.environ.get("PIPER_MODEL", "")
 KOKORO_VOICE = os.environ.get("KOKORO_VOICE", "af_heart")   # male option: am_michael
 KOKORO_SPEED = float(os.environ.get("KOKORO_SPEED", "1.0"))
 _kokoro = None
+FISH_URL = "https://api.fish.audio/v1/tts"
+FISH_MODEL = os.environ.get("FISH_MODEL", "s1")
+FISH_VOICE_ID = os.environ.get("FISH_VOICE_ID", "")
+FISH_SPEED = float(os.environ.get("FISH_SPEED", "1.0"))
+
+
+def fish(text, out_base):
+    """Fish Audio TTS. Lines may start with an emotion tag such as "(curious)" for the s1 model."""
+    body = {"text": text, "format": "mp3", "mp3_bitrate": 192, "normalize": True, "latency": "normal",
+            "prosody": {"speed": FISH_SPEED, "volume": 0}}
+    if FISH_VOICE_ID:
+        body["reference_id"] = FISH_VOICE_ID
+    req = urllib.request.Request(FISH_URL, json.dumps(body).encode(), method="POST", headers={
+        "Authorization": "Bearer " + os.environ["FISH_AUDIO_API_KEY"], "Content-Type": "application/json",
+        "model": FISH_MODEL})
+    with urllib.request.urlopen(req, timeout=180) as r:
+        open(out_base + ".mp3", "wb").write(r.read())
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", out_base + ".mp3",
+                    "-ac", "1", "-ar", "48000", out_base + ".wav"], check=True)
+
+
+def strip_tags(text):
+    """Remove leading Fish Audio emotion tags like "(curious)" for engines that would read them aloud."""
+    import re
+    return re.sub(r"^\s*(\([a-z ]+\)\s*)+", "", text)
 
 
 def kokoro(text, out_base):
@@ -64,15 +90,21 @@ def main():
     a = ap.parse_args()
     lines = [l.strip() for l in open(os.path.join(a.episode, "lines.txt")) if l.strip()]
     os.makedirs(os.path.join(a.episode, "audio"), exist_ok=True)
-    use_eleven = bool(os.environ.get("ELEVENLABS_API_KEY"))
-    use_kokoro = not use_eleven and have_kokoro()
-    print("voice engine:", "elevenlabs" if use_eleven else f"kokoro ({KOKORO_VOICE})" if use_kokoro else "piper")
+    use_fish = bool(os.environ.get("FISH_AUDIO_API_KEY"))
+    use_eleven = not use_fish and bool(os.environ.get("ELEVENLABS_API_KEY"))
+    use_kokoro = not use_fish and not use_eleven and have_kokoro()
+    print("voice engine:", f"fish ({FISH_MODEL}, voice {FISH_VOICE_ID or 'default'})" if use_fish else "elevenlabs" if use_eleven else f"kokoro ({KOKORO_VOICE})" if use_kokoro else "piper")
     if use_eleven and not VOICE_ID:
         sys.exit("Set ELEVENLABS_VOICE_ID (copy it from the voice's page in ElevenLabs)")
     for i, text in enumerate(lines, 1):
         if a.only and i != a.only:
             continue
         base = os.path.join(a.episode, "audio", f"l{i}")
+        if use_fish:
+            fish(text, base)
+            print(f"l{i} ok  {text[:60]}")
+            continue
+        text = strip_tags(text)
         if use_eleven:
             eleven(text, " ".join(lines[max(0, i - 3):i - 1]), " ".join(lines[i:i + 2]), base)
         elif use_kokoro:
