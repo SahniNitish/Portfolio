@@ -2,7 +2,7 @@
 
 History · Geopolitics · Documentaries. Look: flat 2D cartoon "animated history" style, gold Cinzel titles
 (matches the channel banner), cut-out characters animated over separate backgrounds, code-drawn maps,
-chalk diagrams, counters and props. Uses the shared engine in `../tools/engine.py`.
+chalk diagrams, counters and props. Uses the shared engine in `../tools/engine.py` and the channel library `dta.py`.
 
 ## Series: Game Theory
 - `ep01-dating-game/`: "The Dating Game" (first-minute draft). Original script on the Gale–Shapley
@@ -16,6 +16,9 @@ chalk diagrams, counters and props. Uses the shared engine in `../tools/engine.p
 - Cut-outs: end with `Isolated on a solid pure bright green (#00FF00) background, no shadow on the ground. No text, no words, no letters, no logos.`
 
 ## Voice
+**Channel narrator: Fish Audio "WNBA VOICEOVER"** (`fb7ec16ca51a45a5a4db881244d7990a`), model `drama-3`, one
+`text_to_speech` MCP call per line, with `[curious]`-style tags. Full steps: `.claude/skills/make-deeptime-episode/SKILL.md`.
+
 `tools/tts.py` uses Fish Audio when `FISH_AUDIO_API_KEY` is set (`FISH_VOICE_ID` = voice model id from
 fish.audio, `FISH_MODEL` default `s1`). Lines may start with emotion tags like `(curious)`; other
 engines strip them. Fallback draft voice: `KOKORO_VOICE=am_michael KOKORO_SPEED=0.95`.
