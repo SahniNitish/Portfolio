@@ -25,3 +25,8 @@ engines strip them. Fallback draft voice: `KOKORO_VOICE=am_michael KOKORO_SPEED=
 
 ## Fonts
 `assets/fonts/Cinzel.ttf` is from Google Fonts (SIL Open Font License).
+
+## Whiteboard stick-figure videos (white paper, black marker, navy + gold)
+`stick.py` is the drawing engine (docstring at the top). Example: `wb01-fake-it/episode.py` (scenes, sound effects, parallel render).
+Fonts: Permanent Marker (headlines), Patrick Hand (captions), Caveat Brush. Characters are posable stick figures (`figure`, `POSE`, `walk_pose`,
+outfits, faces), plus props (`potato`, `flask`, `rocket`, `anchor`, `boat`, `flame`, `gear`, `cloud`, `desk`, `laptop`, `chair`, `stamp`, `bubble`, `thought`).

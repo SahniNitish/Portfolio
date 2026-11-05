@@ -224,6 +224,7 @@ def sc_quote(t):                                  # 4: "fake it till you make it
 
 def sc_promises(t):                               # 5: three promises
     cv = base(t, SG(t, 5))
+    tag(cv, t, LS(5) + 0.05, "IN THE NEXT SEVEN MINUTES:", 960, 110, size=62, col=NAVY)
     specs = [(0.10, 370, "1", "\"READY\"\nIS A LIE"), (0.40, 960, "2", "OPTIONS ARE\nQUIETLY\nDESTROYING YOU"), (0.72, 1550, "3", "THE FOUR-WORD RULE\nTURNS FAILURE\nINTO FUEL")]
     for n_, (fr, x, num, txt) in enumerate(specs):
         t_in = AT(5, fr)

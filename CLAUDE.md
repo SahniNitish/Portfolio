@@ -9,8 +9,11 @@ This repo is the user's YouTube production studio. Everything lives in `video-st
 | LunchBox Express | Stick-figure "what if" stories | `make-episode` | `video-studio/episodes/` |
 
 ## Current work (update this section when it changes)
-- **Deep Time Academy, Game Theory #1 "The Dating Game"** (`video-studio/deeptime/ep01-dating-game/`): **FINISHED and delivered** (12:58, thumbnails and `metadata.json` included; see `PRODUCTION_PLAN.md` "STATUS"). Wait for the user's feedback; edits are cheap (re-render about 30 min, re-voice a line about 80-170 credits).
-- **Next:** Game Theory #2, "a game played by entire nations" (teased in the outro). Script first, show it, get approval before spending credits. The Fish *connector* spends package credits (the user topped up a new account with 8,000 on 2026-11-04; about 3,900 were left). Their API balance only works through the REST API with `FISH_AUDIO_API_KEY` (`tools/voice_missing.py`).
+- **Deep Time Academy, Game Theory #1 "The Dating Game"** (`video-studio/deeptime/ep01-dating-game/`): finished and delivered earlier (12:58, Fish WNBA VOICEOVER narrator).
+- **Whiteboard video "Why Faking It Is Actually a Superpower"** (`video-studio/deeptime/wb01-fake-it/`): **finished** (5:36). The user asked for a **white background, stick-figure** style; everything is drawn in code with `video-studio/deeptime/stick.py` (hand-drawn boiling lines, posable stick figures, props, bubbles; read its docstring). Script = the user's own (`script.md`, `lines.txt`, 43 lines); `episode.py` has one `sc_*` scene per line group, FX cue table and music. `python deeptime/wb01-fake-it/episode.py` renders in about 4 min on 4 cores.
+  - **Voice is a free draft (Kokoro am_michael)** because the Fish connector had 3,816 credits and the full narration needs 4,225 (4,048 without tags). To get the WNBA VOICEOVER version: top up Fish credits, voice each line of `lines.txt` with the connector (voice `fb7ec16ca51a45a5a4db881244d7990a`, model `drama-3`), put the files in `audio/lN.wav` (see `tools/fetch_fish_audio.py`), delete `audio/clean/`, re-run `episode.py`.
+  - Known script issues left as written: "four-word rule" vs the three-word quote "Action produces information"; Varun Mayya and Brian Armstrong attributions unverified; Cortes scuttled (not burned) his ships (the label says "scuttles").
+- **Next:** Game Theory #2 "a game played by entire nations" (proposed, not started; script first, get approval before spending credits).
 
 ## What the user likes (keep doing this)
 - **"Animated history" style:** flat 2D cartoon characters that move (slide in, hop, land, breathe), animated maps and diagrams, pop-up labels, gold titles with a shine. **Not** painted still images. They rejected that early on.
