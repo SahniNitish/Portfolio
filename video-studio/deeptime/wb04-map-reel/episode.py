@@ -687,7 +687,7 @@ def render_parallel(total, audio_wav, out_mp4, procs=4, parts=12):
     lst = os.path.join(tmp, "list.txt")
     open(lst, "w").write("".join(f"file '{j[2]}'\n" for j in jobs))
     subprocess.run(["ffmpeg", "-nostdin", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", lst, "-i", audio_wav, "-c:v", "copy",
-                    "-af", "alimiter=limit=0.70:level=disabled", "-c:a", "aac", "-b:a", "256k", "-shortest", "-movflags", "+faststart", out_mp4], check=True)
+                    "-af", "alimiter=limit=0.70:level=disabled", "-c:a", "aac", "-ac", "2", "-ar", "44100", "-b:a", "192k", "-shortest", "-movflags", "+faststart", out_mp4], check=True)
     shutil.rmtree(tmp)
 
 
