@@ -56,13 +56,14 @@ def get_font(name, px):
 
 
 class Canvas:
-    def __init__(self, t, cam=(W / 2, H / 2, 1.0), bg=PAPER):
+    def __init__(self, t, cam=None, bg=PAPER, size=(W, H)):
         self.t = t
-        self.img = Image.new("RGB", (W * SS, H * SS), bg)
+        self.W, self.H = size                                            # (1080, 1920) for a portrait reel
+        self.img = Image.new("RGB", (self.W * SS, self.H * SS), bg)
         self.d = ImageDraw.Draw(self.img)
         self.boil = int(t * 8)
-        cx, cy, z = cam
-        self.M = (z, 0.0, 0.0, z, W / 2 - cx * z, H / 2 - cy * z)       # x' = a x + b y + e ; y' = c x + d y + f
+        cx, cy, z = cam or (self.W / 2, self.H / 2, 1.0)
+        self.M = (z, 0.0, 0.0, z, self.W / 2 - cx * z, self.H / 2 - cy * z)   # x' = a x + b y + e ; y' = c x + d y + f
         self.fade = 1.0
         self.stack = []
 

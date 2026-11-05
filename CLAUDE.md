@@ -14,6 +14,7 @@ This repo is the user's YouTube production studio. Everything lives in `video-st
   - The Fish script (`lines.txt`) is the user's script **lightly tightened** to fit 3,816 credits (list in `script.md`); original wording is `lines_full.txt` (needs 4,225 credits). The free Kokoro version's wavs were kept in `audio/kokoro/` (git-ignored). Fish mp3s + links are in `audio/fish/`.
   - After rendering, re-attach audio with a limiter (`alimiter=limit=0.66`) so the peak lands below -1 dBFS; final was -16.4 LUFS / -1.7 dBFS.
   - Script issues: Varun Mayya and Brian Armstrong attributions unverified; Cortes scuttled (not burned) his ships (the label says "scuttles"). The "four-word rule" mistake was fixed in the Fish version.
+- **Reel (9:16, 50 s) from the whiteboard video** (`video-studio/deeptime/wb02-reel/`): **finished**. Built only from old assets: 9 existing Fish lines of wb01 (0 credits), `stick.py` (Canvas now supports `size=(1080,1920)`), wb01's music and SFX. `episode.py` imports wb01 as a module; `words.json` = word timings for the word-by-word captions (spoken word is red); `caption.md` has the caption and hashtags. Renders in about 40 s. -15.6 LUFS / -1.7 dBFS. The user's attached reference clip (Prof. Jiang clips) was used only as format reference.
 - **Next:** Game Theory #2 "a game played by entire nations" (proposed, not started; script first, get approval before spending credits).
 
 ## What the user likes (keep doing this)
