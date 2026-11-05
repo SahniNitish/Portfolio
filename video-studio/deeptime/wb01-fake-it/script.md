@@ -12,3 +12,9 @@ ACT IV: ACTION PRODUCES INFORMATION (lines 32-37): fog-of-war map; chair that ex
 OUTRO: THE BELIEF METER (lines 38-43): +1% per rep; potato gets a tiny crown; comment question; subscribe.
 
 Fact notes for the description / review: Franklin's 13 virtues weekly chart is in his Autobiography; Xiang Yu / Battle of Julu 207 BC (sank boats, broke cooking pots, three days of rations); Cortes in 1519 had his ships scuttled (the "burned" version is the popular retelling); "commitment device" is a real behavioural-economics term. The Varun Mayya "Type 1 / Type 2 crazy" framing and the Brian Armstrong "Action produces information" attributions are as supplied: verify before posting.
+
+---
+**Fish-voice edit (2026-11-05):** `lines.txt` is the narration actually voiced with Fish Audio (WNBA VOICEOVER, drama-3). It is the user's script lightly tightened to fit 3,816 credits:
+quote marks and ellipses became plain punctuation; small cuts: "Quick question." (1), "just" (3, 35), "four-word" (5, 32: it is a three-word quote), "single" (10), "Entrepreneur"/"Tech founder" (16, 32),
+"literally" (25), "all at once" (27), "Well..." (31), "Sitting in your room," (33), "into your brain" (38), and in line 42 "The one you'd chase if nobody's permission was required?" and "Yes, the pun was intentional."
+`lines_full.txt` is the original wording; voicing it exactly as written needs 4,225 credits.

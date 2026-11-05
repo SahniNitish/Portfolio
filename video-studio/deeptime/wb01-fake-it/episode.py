@@ -225,7 +225,7 @@ def sc_quote(t):                                  # 4: "fake it till you make it
 def sc_promises(t):                               # 5: three promises
     cv = base(t, SG(t, 5))
     tag(cv, t, LS(5) + 0.05, "IN THE NEXT SEVEN MINUTES:", 960, 110, size=62, col=NAVY)
-    specs = [(0.10, 370, "1", "\"READY\"\nIS A LIE"), (0.40, 960, "2", "OPTIONS ARE\nQUIETLY\nDESTROYING YOU"), (0.72, 1550, "3", "THE FOUR-WORD RULE\nTURNS FAILURE\nINTO FUEL")]
+    specs = [(0.10, 370, "1", "\"READY\"\nIS A LIE"), (0.40, 960, "2", "OPTIONS ARE\nQUIETLY\nDESTROYING YOU"), (0.72, 1550, "3", "THE RULE THAT\nTURNS FAILURE\nINTO FUEL")]
     for n_, (fr, x, num, txt) in enumerate(specs):
         t_in = AT(5, fr)
         r = appear(t, t_in, 0.5)
@@ -248,8 +248,8 @@ def sc_promises(t):                               # 5: three promises
             for k, (dx, dy) in enumerate(((-150, -120), (150, -120), (-170, 40), (170, 40), (0, -190))):
                 cv.arrow((x + dx * 0.35, 640 + dy * 0.35), (x + dx, 640 + dy), w=5, col=RED, amp=1.0, seed=k, head=20)
         if n_ == 2 and r > 0.6:                                           # four blanks + fuel can
-            for k in range(4):
-                cv.line((x - 205 + k * 100, 560), (x - 135 + k * 100, 560), w=7, col=NAVY)
+            for k in range(3):
+                cv.line((x - 190 + k * 135, 560), (x - 90 + k * 135, 560), w=7, col=NAVY)
             cv.text("?", x, 480, size=80, font="marker", col=GOLD)
             with cv.at(x, 760, 1.0):
                 cv.rect(-60, -100, 60, 0, r=10, fill=RED, w=6)
