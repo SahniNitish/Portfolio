@@ -40,9 +40,11 @@ def fish(text, out_base):
 
 
 def strip_tags(text):
-    """Remove leading Fish Audio emotion tags like "(curious)" for engines that would read them aloud."""
+    """Remove [delivery tags] and <emphasis>-style markup (for engines that would read them aloud)."""
     import re
-    return re.sub(r"^\s*(\([a-z ]+\)\s*)+", "", text)
+    text = re.sub(r"\[[^\]]*\]|</?[A-Za-z]+>", "", text)
+    text = re.sub(r"^\s*(\([a-z ]+\)\s*)+", "", text)
+    return re.sub(r"\s{2,}", " ", text).strip()
 
 
 def kokoro(text, out_base):
