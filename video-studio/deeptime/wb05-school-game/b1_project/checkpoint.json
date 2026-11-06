@@ -1,0 +1,16 @@
+{
+  "stage": "planned",
+  "mode": "B",
+  "style": "B1",
+  "ratio": "16:9",
+  "target": "~7:30 full film",
+  "voice": "Gemini Bodi (B1 default), native 1x",
+  "missing": [
+    "GEMINI_API_KEY in session env (set in environment settings, needs a NEW session)"
+  ],
+  "approvals": {
+    "script": "user supplied",
+    "sample": "pending"
+  },
+  "next": "new session: doctor -> character reference sheet -> 20s sample (shots 1-6) -> user approves sample -> full film"
+}
