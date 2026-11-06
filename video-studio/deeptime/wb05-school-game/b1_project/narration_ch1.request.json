@@ -1,0 +1,11 @@
+{
+  "kind": "speech",
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Bodi",
+  "requested_at": "2026-11-06T12:26:29.967755Z",
+  "text_file": "narration_ch1.txt",
+  "note": "direct API call because the skill adapter rejects audio/wav; same model, voice, exact text, no direction",
+  "mime": "audio/wav",
+  "bytes": 1922276,
+  "status": "ok"
+}

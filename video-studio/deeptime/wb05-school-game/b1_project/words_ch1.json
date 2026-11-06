@@ -1,0 +1,494 @@
+{
+ "words": [
+  {
+   "start": 0.0,
+   "end": 0.5,
+   "word": "School"
+  },
+  {
+   "start": 0.5,
+   "end": 0.82,
+   "word": "has"
+  },
+  {
+   "start": 0.82,
+   "end": 1.24,
+   "word": "three"
+  },
+  {
+   "start": 1.24,
+   "end": 1.72,
+   "word": "simple"
+  },
+  {
+   "start": 1.72,
+   "end": 2.98,
+   "word": "jobs\u2014teach"
+  },
+  {
+   "start": 2.98,
+   "end": 3.1,
+   "word": "us"
+  },
+  {
+   "start": 3.1,
+   "end": 3.24,
+   "word": "to"
+  },
+  {
+   "start": 3.24,
+   "end": 3.5,
+   "word": "read,"
+  },
+  {
+   "start": 4.14,
+   "end": 4.38,
+   "word": "teach"
+  },
+  {
+   "start": 4.38,
+   "end": 4.56,
+   "word": "us"
+  },
+  {
+   "start": 4.56,
+   "end": 4.7,
+   "word": "to"
+  },
+  {
+   "start": 4.7,
+   "end": 5.02,
+   "word": "think,"
+  },
+  {
+   "start": 5.32,
+   "end": 5.82,
+   "word": "and"
+  },
+  {
+   "start": 5.82,
+   "end": 6.06,
+   "word": "teach"
+  },
+  {
+   "start": 6.06,
+   "end": 6.24,
+   "word": "us"
+  },
+  {
+   "start": 6.24,
+   "end": 6.36,
+   "word": "to"
+  },
+  {
+   "start": 6.36,
+   "end": 6.58,
+   "word": "keep"
+  },
+  {
+   "start": 6.58,
+   "end": 7.0,
+   "word": "learning"
+  },
+  {
+   "start": 7.0,
+   "end": 7.26,
+   "word": "for"
+  },
+  {
+   "start": 7.26,
+   "end": 7.36,
+   "word": "the"
+  },
+  {
+   "start": 7.36,
+   "end": 7.66,
+   "word": "rest"
+  },
+  {
+   "start": 7.66,
+   "end": 7.8,
+   "word": "of"
+  },
+  {
+   "start": 7.8,
+   "end": 7.92,
+   "word": "our"
+  },
+  {
+   "start": 7.92,
+   "end": 8.34,
+   "word": "lives."
+  },
+  {
+   "start": 9.0,
+   "end": 9.5,
+   "word": "So"
+  },
+  {
+   "start": 9.5,
+   "end": 9.74,
+   "word": "why"
+  },
+  {
+   "start": 9.74,
+   "end": 9.88,
+   "word": "do"
+  },
+  {
+   "start": 9.88,
+   "end": 10.3,
+   "word": "schools"
+  },
+  {
+   "start": 10.3,
+   "end": 10.78,
+   "word": "often"
+  },
+  {
+   "start": 10.78,
+   "end": 11.24,
+   "word": "produce"
+  },
+  {
+   "start": 11.24,
+   "end": 12.42,
+   "word": "memorization"
+  },
+  {
+   "start": 12.42,
+   "end": 12.96,
+   "word": "instead"
+  },
+  {
+   "start": 12.96,
+   "end": 13.1,
+   "word": "of"
+  },
+  {
+   "start": 13.1,
+   "end": 13.4,
+   "word": "thinking,"
+  },
+  {
+   "start": 14.0,
+   "end": 14.44,
+   "word": "competition"
+  },
+  {
+   "start": 14.44,
+   "end": 15.18,
+   "word": "instead"
+  },
+  {
+   "start": 15.18,
+   "end": 15.34,
+   "word": "of"
+  },
+  {
+   "start": 15.34,
+   "end": 15.86,
+   "word": "collaboration?"
+  },
+  {
+   "start": 16.86,
+   "end": 16.96,
+   "word": "And"
+  },
+  {
+   "start": 16.96,
+   "end": 17.34,
+   "word": "students"
+  },
+  {
+   "start": 17.34,
+   "end": 17.52,
+   "word": "who"
+  },
+  {
+   "start": 17.52,
+   "end": 17.98,
+   "word": "celebrate"
+  },
+  {
+   "start": 17.98,
+   "end": 18.18,
+   "word": "the"
+  },
+  {
+   "start": 18.18,
+   "end": 18.38,
+   "word": "end"
+  },
+  {
+   "start": 18.38,
+   "end": 18.52,
+   "word": "of"
+  },
+  {
+   "start": 18.52,
+   "end": 19.0,
+   "word": "exams"
+  },
+  {
+   "start": 19.0,
+   "end": 19.42,
+   "word": "by"
+  },
+  {
+   "start": 19.42,
+   "end": 19.88,
+   "word": "never"
+  },
+  {
+   "start": 19.88,
+   "end": 20.16,
+   "word": "wanting"
+  },
+  {
+   "start": 20.16,
+   "end": 20.34,
+   "word": "to"
+  },
+  {
+   "start": 20.34,
+   "end": 20.62,
+   "word": "open"
+  },
+  {
+   "start": 20.62,
+   "end": 20.76,
+   "word": "a"
+  },
+  {
+   "start": 20.76,
+   "end": 20.96,
+   "word": "book"
+  },
+  {
+   "start": 20.96,
+   "end": 21.36,
+   "word": "again?"
+  },
+  {
+   "start": 22.48,
+   "end": 22.76,
+   "word": "What"
+  },
+  {
+   "start": 22.76,
+   "end": 22.88,
+   "word": "if"
+  },
+  {
+   "start": 22.88,
+   "end": 23.26,
+   "word": "school"
+  },
+  {
+   "start": 23.26,
+   "end": 23.88,
+   "word": "isn't"
+  },
+  {
+   "start": 23.88,
+   "end": 24.28,
+   "word": "broken?"
+  },
+  {
+   "start": 24.94,
+   "end": 25.12,
+   "word": "What"
+  },
+  {
+   "start": 25.12,
+   "end": 25.26,
+   "word": "if"
+  },
+  {
+   "start": 25.26,
+   "end": 25.42,
+   "word": "it's"
+  },
+  {
+   "start": 25.42,
+   "end": 25.72,
+   "word": "working"
+  },
+  {
+   "start": 25.72,
+   "end": 26.28,
+   "word": "exactly"
+  },
+  {
+   "start": 26.28,
+   "end": 26.72,
+   "word": "as"
+  },
+  {
+   "start": 26.72,
+   "end": 26.84,
+   "word": "the"
+  },
+  {
+   "start": 26.84,
+   "end": 27.24,
+   "word": "system"
+  },
+  {
+   "start": 27.24,
+   "end": 27.68,
+   "word": "rewards"
+  },
+  {
+   "start": 27.68,
+   "end": 27.98,
+   "word": "it"
+  },
+  {
+   "start": 27.98,
+   "end": 28.14,
+   "word": "to"
+  },
+  {
+   "start": 28.14,
+   "end": 28.38,
+   "word": "work?"
+  },
+  {
+   "start": 28.38,
+   "end": 29.26,
+   "word": "To"
+  },
+  {
+   "start": 29.26,
+   "end": 29.68,
+   "word": "understand"
+  },
+  {
+   "start": 29.68,
+   "end": 30.0,
+   "word": "that,"
+  },
+  {
+   "start": 30.38,
+   "end": 30.78,
+   "word": "let's"
+  },
+  {
+   "start": 30.78,
+   "end": 30.92,
+   "word": "look"
+  },
+  {
+   "start": 30.92,
+   "end": 31.02,
+   "word": "at"
+  },
+  {
+   "start": 31.02,
+   "end": 31.12,
+   "word": "the"
+  },
+  {
+   "start": 31.12,
+   "end": 31.28,
+   "word": "man"
+  },
+  {
+   "start": 31.28,
+   "end": 31.44,
+   "word": "who"
+  },
+  {
+   "start": 31.44,
+   "end": 31.7,
+   "word": "built"
+  },
+  {
+   "start": 31.7,
+   "end": 31.9,
+   "word": "the"
+  },
+  {
+   "start": 31.9,
+   "end": 32.2,
+   "word": "school"
+  },
+  {
+   "start": 32.2,
+   "end": 32.84,
+   "word": "everyone"
+  },
+  {
+   "start": 32.84,
+   "end": 33.44,
+   "word": "claims"
+  },
+  {
+   "start": 33.44,
+   "end": 33.62,
+   "word": "to"
+  },
+  {
+   "start": 33.62,
+   "end": 33.94,
+   "word": "want,"
+  },
+  {
+   "start": 34.4,
+   "end": 34.52,
+   "word": "got"
+  },
+  {
+   "start": 34.52,
+   "end": 34.86,
+   "word": "students"
+  },
+  {
+   "start": 34.86,
+   "end": 35.1,
+   "word": "into"
+  },
+  {
+   "start": 35.1,
+   "end": 35.48,
+   "word": "Yale,"
+  },
+  {
+   "start": 36.02,
+   "end": 36.32,
+   "word": "Wharton,"
+  },
+  {
+   "start": 36.52,
+   "end": 36.54,
+   "word": "and"
+  },
+  {
+   "start": 36.54,
+   "end": 36.94,
+   "word": "Cornell,"
+  },
+  {
+   "start": 37.66,
+   "end": 38.06,
+   "word": "and"
+  },
+  {
+   "start": 38.06,
+   "end": 38.68,
+   "word": "then"
+  },
+  {
+   "start": 38.68,
+   "end": 39.1,
+   "word": "got"
+  },
+  {
+   "start": 39.1,
+   "end": 39.48,
+   "word": "fired."
+  }
+ ]
+}
