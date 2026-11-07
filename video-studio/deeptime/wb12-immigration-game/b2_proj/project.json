@@ -1,0 +1,1004 @@
+{
+ "version": 1,
+ "style": "B2",
+ "width": 1280,
+ "height": 720,
+ "fps": 30,
+ "voice": {
+  "path": "narration.wav",
+  "lead": 0.15,
+  "tail": 0.35
+ },
+ "captions": [
+  {
+   "start": 0.15,
+   "end": 3.27,
+   "text": "Immigration is usually sold as a simple meritocracy."
+  },
+  {
+   "start": 3.81,
+   "end": 4.99,
+   "text": "Move to a rich country,"
+  },
+  {
+   "start": 5.430000000000001,
+   "end": 7.73,
+   "text": "study hard, get a good job, fit in."
+  },
+  {
+   "start": 8.870000000000001,
+   "end": 10.69,
+   "text": "But look at it through game theory, and"
+  },
+  {
+   "start": 10.69,
+   "end": 11.77,
+   "text": "a different picture appears."
+  },
+  {
+   "start": 12.57,
+   "end": 14.610000000000001,
+   "text": "Immigration isn't a neutral elevator."
+  },
+  {
+   "start": 15.17,
+   "end": 17.09,
+   "text": "It's a game, and the rules were written"
+  },
+  {
+   "start": 17.09,
+   "end": 18.75,
+   "text": "by the people already in charge."
+  },
+  {
+   "start": 19.869999999999997,
+   "end": 20.93,
+   "text": "Start with a puzzle."
+  },
+  {
+   "start": 21.63,
+   "end": 24.549999999999997,
+   "text": "Students from East Asian education systems top the"
+  },
+  {
+   "start": 24.549999999999997,
+   "end": 25.509999999999998,
+   "text": "world's PISA rankings."
+  },
+  {
+   "start": 26.119999999999997,
+   "end": 28.47,
+   "text": "East Asian Americans have some of the highest"
+  },
+  {
+   "start": 28.47,
+   "end": 31.15,
+   "text": "median incomes in the United States, and fill"
+  },
+  {
+   "start": 31.15,
+   "end": 31.689999999999998,
+   "text": "engineering,"
+  },
+  {
+   "start": 32.25,
+   "end": 32.47,
+   "text": "medicine,"
+  },
+  {
+   "start": 32.89,
+   "end": 33.35,
+   "text": "and tech."
+  },
+  {
+   "start": 34.42,
+   "end": 37.269999999999996,
+   "text": "Yet research on corporate leadership keeps finding the"
+  },
+  {
+   "start": 37.269999999999996,
+   "end": 40.03,
+   "text": "same thing, they are heavily underrepresented in the"
+  },
+  {
+   "start": 40.03,
+   "end": 40.89,
+   "text": "executive suite."
+  },
+  {
+   "start": 41.51,
+   "end": 43.269999999999996,
+   "text": "People call it the bamboo ceiling."
+  },
+  {
+   "start": 44.57,
+   "end": 47.35,
+   "text": "Studies of some large dating platforms have found"
+  },
+  {
+   "start": 47.35,
+   "end": 48.269999999999996,
+   "text": "a similar penalty,"
+  },
+  {
+   "start": 48.75,
+   "end": 51.69,
+   "text": "with East Asian men receiving fewer replies than"
+  },
+  {
+   "start": 51.69,
+   "end": 52.23,
+   "text": "other groups."
+  },
+  {
+   "start": 53.129999999999995,
+   "end": 56.129999999999995,
+   "text": "The lesson of game theory, doing everything right"
+  },
+  {
+   "start": 56.129999999999995,
+   "end": 58.21,
+   "text": "by the rules, does not mean you control"
+  },
+  {
+   "start": 58.21,
+   "end": 58.809999999999995,
+   "text": "the system."
+  },
+  {
+   "start": 60.15,
+   "end": 61.35,
+   "text": "Think of a casino,"
+  },
+  {
+   "start": 61.97,
+   "end": 64.11,
+   "text": "bright lights, free drinks, the feeling of a"
+  },
+  {
+   "start": 64.11,
+   "end": 64.79,
+   "text": "fair chance."
+  },
+  {
+   "start": 65.27000000000001,
+   "end": 67.17,
+   "text": "But if the games were truly fair, the"
+  },
+  {
+   "start": 67.17,
+   "end": 67.97,
+   "text": "house would go broke."
+  },
+  {
+   "start": 68.51,
+   "end": 70.39,
+   "text": "The house sets the rules so the average"
+  },
+  {
+   "start": 70.39,
+   "end": 71.11,
+   "text": "player loses,"
+  },
+  {
+   "start": 71.57000000000001,
+   "end": 72.91000000000001,
+   "text": "and the casino keeps the money."
+  },
+  {
+   "start": 73.77000000000001,
+   "end": 76.37,
+   "text": "A country that opens its doors to global"
+  },
+  {
+   "start": 76.37,
+   "end": 78.05000000000001,
+   "text": "talent plays a similar role."
+  },
+  {
+   "start": 78.63000000000001,
+   "end": 80.87,
+   "text": "You are invited to play, but the game"
+  },
+  {
+   "start": 80.87,
+   "end": 82.85000000000001,
+   "text": "is built around the home team's norms,"
+  },
+  {
+   "start": 83.29,
+   "end": 85.41000000000001,
+   "text": "communication style, and social networks."
+  },
+  {
+   "start": 86.83000000000001,
+   "end": 87.55000000000001,
+   "text": "Follow the rules,"
+  },
+  {
+   "start": 88.11,
+   "end": 88.73,
+   "text": "pay taxes,"
+  },
+  {
+   "start": 89.19000000000001,
+   "end": 90.45,
+   "text": "obey the law, work hard,"
+  },
+  {
+   "start": 90.97,
+   "end": 91.59,
+   "text": "stay quiet."
+  },
+  {
+   "start": 92.05000000000001,
+   "end": 95.09,
+   "text": "You become a reliable contributor, but contributors are"
+  },
+  {
+   "start": 95.09,
+   "end": 97.31,
+   "text": "not automatically the people who write the rules."
+  },
+  {
+   "start": 98.49000000000001,
+   "end": 100.89,
+   "text": "Play strictly by the rules, and you can"
+  },
+  {
+   "start": 100.89,
+   "end": 102.99000000000001,
+   "text": "trade your skills for a paycheck, while staying"
+  },
+  {
+   "start": 102.99000000000001,
+   "end": 105.19000000000001,
+   "text": "outside the rooms where status is decided."
+  },
+  {
+   "start": 106.45,
+   "end": 107.67,
+   "text": "Now zoom out."
+  },
+  {
+   "start": 107.99000000000001,
+   "end": 110.19000000000001,
+   "text": "Game theory says groups with strong trust and"
+  },
+  {
+   "start": 110.19000000000001,
+   "end": 112.61,
+   "text": "cooperation often win repeated games."
+  },
+  {
+   "start": 113.37,
+   "end": 114.33000000000001,
+   "text": "Networks, mentors,"
+  },
+  {
+   "start": 114.83000000000001,
+   "end": 117.41000000000001,
+   "text": "favors, and loyalty are how status actually moves."
+  },
+  {
+   "start": 118.61,
+   "end": 120.03,
+   "text": "That is the real trade -off,"
+  },
+  {
+   "start": 120.53,
+   "end": 122.43,
+   "text": "dissolve into the crowd, and you may lose"
+  },
+  {
+   "start": 122.43,
+   "end": 122.93,
+   "text": "your network."
+  },
+  {
+   "start": 123.57000000000001,
+   "end": 125.99000000000001,
+   "text": "Stay tightly inside your own community, and you"
+  },
+  {
+   "start": 125.99000000000001,
+   "end": 127.83000000000001,
+   "text": "may stay outside everyone else's."
+  },
+  {
+   "start": 129.07,
+   "end": 131.83,
+   "text": "Population matters too, but the numbers are less"
+  },
+  {
+   "start": 131.83,
+   "end": 133.39000000000001,
+   "text": "dramatic than people think."
+  },
+  {
+   "start": 133.39000000000001,
+   "end": 136.63,
+   "text": "Fertility has fallen below the replacement level of"
+  },
+  {
+   "start": 136.63,
+   "end": 139.83,
+   "text": "about 2.1 children per woman across much"
+  },
+  {
+   "start": 139.83,
+   "end": 140.65,
+   "text": "of the rich world,"
+  },
+  {
+   "start": 141.11,
+   "end": 142.17000000000002,
+   "text": "and in most countries,"
+  },
+  {
+   "start": 142.69,
+   "end": 145.45000000000002,
+   "text": "immigrant fertility drifts toward the local average within"
+  },
+  {
+   "start": 145.45000000000002,
+   "end": 146.69,
+   "text": "a generation or two."
+  },
+  {
+   "start": 147.87,
+   "end": 151.01000000000002,
+   "text": "Forecasts for 2050 are guesses built on assumptions"
+  },
+  {
+   "start": 151.01000000000002,
+   "end": 152.97,
+   "text": "about migration and birth rates."
+  },
+  {
+   "start": 153.61,
+   "end": 155.39000000000001,
+   "text": "Game theory can explain incentives."
+  },
+  {
+   "start": 156.01000000000002,
+   "end": 157.83,
+   "text": "It cannot predict who ends up running a"
+  },
+  {
+   "start": 157.83,
+   "end": 158.19,
+   "text": "country."
+  },
+  {
+   "start": 159.79,
+   "end": 162.61,
+   "text": "Migration is not a modern invention, and it"
+  },
+  {
+   "start": 162.61,
+   "end": 163.55,
+   "text": "was rarely gentle."
+  },
+  {
+   "start": 164.27,
+   "end": 167.37,
+   "text": "Ancient DNA shows early farmers spreading across Europe"
+  },
+  {
+   "start": 167.37,
+   "end": 170.33,
+   "text": "and later step herders arriving and reshaping the"
+  },
+  {
+   "start": 170.33,
+   "end": 170.97,
+   "text": "population,"
+  },
+  {
+   "start": 171.37,
+   "end": 172.81,
+   "text": "sometimes through conquest,"
+  },
+  {
+   "start": 173.35,
+   "end": 174.35,
+   "text": "sometimes through mixing."
+  },
+  {
+   "start": 175.89000000000001,
+   "end": 177.85,
+   "text": "Modern open immigration is recent."
+  },
+  {
+   "start": 178.45000000000002,
+   "end": 180.21,
+   "text": "It grew out of European expansion,"
+  },
+  {
+   "start": 180.65,
+   "end": 182.47,
+   "text": "and then, after World War II,"
+  },
+  {
+   "start": 182.95000000000002,
+   "end": 186.29,
+   "text": "American -led globalization built to fill labor shortages"
+  },
+  {
+   "start": 186.29,
+   "end": 188.15,
+   "text": "and power industrial growth."
+  },
+  {
+   "start": 189.07,
+   "end": 191.65,
+   "text": "Systems like that tend to last only while"
+  },
+  {
+   "start": 191.65,
+   "end": 193.35,
+   "text": "they serve the people who design them."
+  },
+  {
+   "start": 194.37,
+   "end": 196.65,
+   "text": "For developing countries there is a price,"
+  },
+  {
+   "start": 197.25,
+   "end": 197.83,
+   "text": "brain drain,"
+  },
+  {
+   "start": 198.55,
+   "end": 198.93,
+   "text": "doctors,"
+  },
+  {
+   "start": 199.39000000000001,
+   "end": 202.11,
+   "text": "engineers and founders are told success means leaving"
+  },
+  {
+   "start": 202.11,
+   "end": 204.21,
+   "text": "to look for money and respect in a"
+  },
+  {
+   "start": 204.21,
+   "end": 205.23000000000002,
+   "text": "richer country's cities."
+  },
+  {
+   "start": 206.03,
+   "end": 208.41,
+   "text": "And some who go find that comfort comes"
+  },
+  {
+   "start": 208.41,
+   "end": 209.47,
+   "text": "with a glass ceiling."
+  },
+  {
+   "start": 210.15,
+   "end": 212.63,
+   "text": "A big salary under someone else's rules is"
+  },
+  {
+   "start": 212.63,
+   "end": 213.67000000000002,
+   "text": "not the same as power."
+  },
+  {
+   "start": 214.61,
+   "end": 216.45000000000002,
+   "text": "Real power comes from building,"
+  },
+  {
+   "start": 217.01000000000002,
+   "end": 219.27,
+   "text": "shaping and sustaining institutions of your own."
+  },
+  {
+   "start": 220.43,
+   "end": 222.81,
+   "text": "So here is the sobering takeaway of the"
+  },
+  {
+   "start": 222.81,
+   "end": 224.07,
+   "text": "game theory of immigration."
+  },
+  {
+   "start": 224.79,
+   "end": 227.09,
+   "text": "Whoever sets the rules tends to collect the"
+  },
+  {
+   "start": 227.09,
+   "end": 227.57,
+   "text": "spoils."
+  },
+  {
+   "start": 228.69,
+   "end": 230.27,
+   "text": "For individuals and for nations,"
+  },
+  {
+   "start": 230.87,
+   "end": 232.87,
+   "text": "the winning move is not climbing a rigged"
+  },
+  {
+   "start": 232.87,
+   "end": 233.55,
+   "text": "ladder forever."
+  },
+  {
+   "start": 234.19,
+   "end": 235.67000000000002,
+   "text": "It is knowing when to build a game"
+  },
+  {
+   "start": 235.67000000000002,
+   "end": 236.19,
+   "text": "of your own."
+  },
+  {
+   "start": 237.43,
+   "end": 239.43,
+   "text": "If you have lived this, what did the"
+  },
+  {
+   "start": 239.43,
+   "end": 241.23000000000002,
+   "text": "rules cost you and what did they give"
+  },
+  {
+   "start": 241.23000000000002,
+   "end": 241.47,
+   "text": "you?"
+  },
+  {
+   "start": 241.89000000000001,
+   "end": 242.79,
+   "text": "Tell me in the comments."
+  },
+  {
+   "start": 243.39000000000001,
+   "end": 245.51000000000002,
+   "text": "And subscribe for the next game theory breakdown."
+  }
+ ],
+ "shots": [
+  {
+   "start": 0.0,
+   "end": 4.0,
+   "layers": [
+    {
+     "type": "image",
+     "path": "art/shot1.png",
+     "x": 97,
+     "y": 0,
+     "w": 1085,
+     "keys": [
+      {
+       "t": 0,
+       "alpha": 0
+      },
+      {
+       "t": 0.35,
+       "alpha": 1
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "text": "A SIMPLE",
+     "x": 50,
+     "y": 110,
+     "size": 64,
+     "bold": true,
+     "from": 0.3,
+     "keys": [
+      {
+       "t": 0.3,
+       "alpha": 0,
+       "x": 20
+      },
+      {
+       "t": 0.6,
+       "alpha": 1,
+       "x": 50
+      }
+     ],
+     "color": "#1d2b64"
+    },
+    {
+     "type": "text",
+     "text": "MERITOCRACY?",
+     "x": 50,
+     "y": 190,
+     "size": 64,
+     "bold": true,
+     "from": 0.9,
+     "keys": [
+      {
+       "t": 0.9,
+       "alpha": 0,
+       "x": 20
+      },
+      {
+       "t": 1.2,
+       "alpha": 1,
+       "x": 50
+      }
+     ],
+     "color": "#e8483f"
+    }
+   ]
+  },
+  {
+   "start": 4.0,
+   "end": 8.7,
+   "layers": [
+    {
+     "type": "image",
+     "path": "art/shot2.png",
+     "x": 97,
+     "y": 0,
+     "w": 1085,
+     "keys": [
+      {
+       "t": 0,
+       "alpha": 0
+      },
+      {
+       "t": 0.35,
+       "alpha": 1
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "text": "MOVE.",
+     "x": 50,
+     "y": 130,
+     "size": 60,
+     "bold": true,
+     "from": 0.0,
+     "keys": [
+      {
+       "t": 0.0,
+       "alpha": 0,
+       "x": 20
+      },
+      {
+       "t": 0.3,
+       "alpha": 1,
+       "x": 50
+      }
+     ],
+     "color": "#1b7fd0"
+    },
+    {
+     "type": "text",
+     "text": "STUDY.",
+     "x": 50,
+     "y": 210,
+     "size": 60,
+     "bold": true,
+     "from": 1.4,
+     "keys": [
+      {
+       "t": 1.4,
+       "alpha": 0,
+       "x": 20
+      },
+      {
+       "t": 1.7,
+       "alpha": 1,
+       "x": 50
+      }
+     ],
+     "color": "#6a35c9"
+    },
+    {
+     "type": "text",
+     "text": "WORK.",
+     "x": 50,
+     "y": 290,
+     "size": 60,
+     "bold": true,
+     "from": 2.3,
+     "keys": [
+      {
+       "t": 2.3,
+       "alpha": 0,
+       "x": 20
+      },
+      {
+       "t": 2.5999999999999996,
+       "alpha": 1,
+       "x": 50
+      }
+     ],
+     "color": "#e07a10"
+    },
+    {
+     "type": "text",
+     "text": "FIT IN.",
+     "x": 50,
+     "y": 370,
+     "size": 60,
+     "bold": true,
+     "from": 3.2,
+     "keys": [
+      {
+       "t": 3.2,
+       "alpha": 0,
+       "x": 20
+      },
+      {
+       "t": 3.5,
+       "alpha": 1,
+       "x": 50
+      }
+     ],
+     "color": "#0f9d8f"
+    }
+   ]
+  },
+  {
+   "start": 8.7,
+   "end": 12.3,
+   "layers": [
+    {
+     "type": "image",
+     "path": "art/shot3.png",
+     "x": 97,
+     "y": 0,
+     "w": 1085,
+     "keys": [
+      {
+       "t": 0,
+       "alpha": 0
+      },
+      {
+       "t": 0.35,
+       "alpha": 1
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "text": "GAME",
+     "x": 50,
+     "y": 120,
+     "size": 84,
+     "bold": true,
+     "from": 0.5,
+     "keys": [
+      {
+       "t": 0.5,
+       "alpha": 0,
+       "x": 20
+      },
+      {
+       "t": 0.8,
+       "alpha": 1,
+       "x": 50
+      }
+     ],
+     "color": "#e8483f"
+    },
+    {
+     "type": "text",
+     "text": "THEORY",
+     "x": 50,
+     "y": 215,
+     "size": 84,
+     "bold": true,
+     "from": 0.9,
+     "keys": [
+      {
+       "t": 0.9,
+       "alpha": 0,
+       "x": 20
+      },
+      {
+       "t": 1.2,
+       "alpha": 1,
+       "x": 50
+      }
+     ],
+     "color": "#1d2b64"
+    },
+    {
+     "type": "text",
+     "text": "a different picture",
+     "x": 50,
+     "y": 300,
+     "size": 40,
+     "bold": false,
+     "from": 1.8,
+     "keys": [
+      {
+       "t": 1.8,
+       "alpha": 0,
+       "x": 20
+      },
+      {
+       "t": 2.1,
+       "alpha": 1,
+       "x": 50
+      }
+     ],
+     "color": "#6a35c9"
+    }
+   ]
+  },
+  {
+   "start": 12.3,
+   "end": 20.0,
+   "layers": [
+    {
+     "type": "image",
+     "path": "art/shot4.png",
+     "x": 97,
+     "y": 0,
+     "w": 1085,
+     "keys": [
+      {
+       "t": 0,
+       "alpha": 0
+      },
+      {
+       "t": 0.35,
+       "alpha": 1
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "text": "NOT AN ELEVATOR.",
+     "x": 50,
+     "y": 110,
+     "size": 56,
+     "bold": true,
+     "from": 0.3,
+     "keys": [
+      {
+       "t": 0.3,
+       "alpha": 0,
+       "x": 20
+      },
+      {
+       "t": 0.6,
+       "alpha": 1,
+       "x": 50
+      }
+     ],
+     "color": "#1d2b64"
+    },
+    {
+     "type": "text",
+     "text": "A GAME.",
+     "x": 50,
+     "y": 190,
+     "size": 84,
+     "bold": true,
+     "from": 2.9,
+     "keys": [
+      {
+       "t": 2.9,
+       "alpha": 0,
+       "x": 20
+      },
+      {
+       "t": 3.1999999999999997,
+       "alpha": 1,
+       "x": 50
+      }
+     ],
+     "color": "#e8483f"
+    },
+    {
+     "type": "text",
+     "text": "rules written by those in charge",
+     "x": 50,
+     "y": 285,
+     "size": 38,
+     "bold": false,
+     "from": 4.3,
+     "keys": [
+      {
+       "t": 4.3,
+       "alpha": 0,
+       "x": 20
+      },
+      {
+       "t": 4.6,
+       "alpha": 1,
+       "x": 50
+      }
+     ],
+     "color": "#0f9d8f"
+    }
+   ]
+  }
+ ],
+ "sfx": [
+  {
+   "time": 0.45,
+   "kind": "paper",
+   "gain": 0.04
+  },
+  {
+   "time": 0.95,
+   "kind": "pop",
+   "gain": 0.03
+  },
+  {
+   "time": 4.0,
+   "kind": "paper",
+   "gain": 0.04
+  },
+  {
+   "time": 4.1,
+   "kind": "pop",
+   "gain": 0.03
+  },
+  {
+   "time": 5.5,
+   "kind": "pop",
+   "gain": 0.03
+  },
+  {
+   "time": 6.4,
+   "kind": "pop",
+   "gain": 0.03
+  },
+  {
+   "time": 7.3,
+   "kind": "pop",
+   "gain": 0.03
+  },
+  {
+   "time": 8.7,
+   "kind": "paper",
+   "gain": 0.04
+  },
+  {
+   "time": 9.2,
+   "kind": "chime",
+   "gain": 0.035
+  },
+  {
+   "time": 9.6,
+   "kind": "pop",
+   "gain": 0.03
+  },
+  {
+   "time": 12.3,
+   "kind": "paper",
+   "gain": 0.04
+  },
+  {
+   "time": 12.7,
+   "kind": "pop",
+   "gain": 0.03
+  },
+  {
+   "time": 15.2,
+   "kind": "chime",
+   "gain": 0.04
+  },
+  {
+   "time": 16.6,
+   "kind": "pop",
+   "gain": 0.03
+  }
+ ]
+}
