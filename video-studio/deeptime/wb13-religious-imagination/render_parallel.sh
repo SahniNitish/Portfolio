@@ -20,4 +20,5 @@ wait
 : > "$OUT/list.txt"; for i in $(seq 0 $((N-1))); do echo "file '$OUT/chunk$i.mp4'" >> "$OUT/list.txt"; done
 ffmpeg -nostdin -y -loglevel error -f concat -safe 0 -i "$OUT/list.txt" -i "$VO" -c:v copy \
   -af "loudnorm=I=-16:TP=-1.5:LRA=11,alimiter=limit=0.84:level=disabled" -c:a aac -ac 2 -ar 44100 -b:a 192k -shortest -movflags +faststart "$OUT/wb13_religious_imagination.mp4"
+ffmpeg -nostdin -y -loglevel error -i "$OUT/wb13_religious_imagination.mp4" -vf scale=1280:720 -c:v libx264 -preset medium -crf 25 -c:a copy -movflags +faststart "$OUT/wb13_share_720p.mp4"
 echo FINISHED

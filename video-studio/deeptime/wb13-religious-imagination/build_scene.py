@@ -290,9 +290,25 @@ def resolve(v, base, cache=None):
 
 
 def build():
+    def fg_time(s):
+        """absolute time of the first foreground element that is tied to the voice (tuple time), or None"""
+        ts = []
+        for e in s["els"]:
+            t0 = e.get("t0")
+            if isinstance(t0, tuple):
+                kind, i, x = t0
+                a, bb = TT[i]
+                ts.append(a + x if kind == "S" else a + (bb - a) * x)
+        return min(ts) if ts else None
     starts = []
     for k, s in enumerate(SHOTS):
-        starts.append(0.0 if k == 0 else max(0.0, TT[s["a"]][0] - 0.2 if not HEAD[s["a"]] else TT[s["a"]][0] - 0.1))
+        if k == 0:
+            starts.append(0.0); continue
+        st = TT[s["a"]][0] - (0.2 if not HEAD[s["a"]] else 0.1)
+        ft = fg_time(s)
+        if ft is not None and ft - 0.45 > st:                  # first visual comes late: start the shot later so there is no empty beat
+            st = min(ft - 0.45, TT[s["a"]][0] + 1.3)
+        starts.append(max(0.0, st))
     for k in range(1, len(starts)):                       # keep strictly increasing
         if starts[k] <= starts[k - 1] + 0.8:
             starts[k] = starts[k - 1] + 0.8
