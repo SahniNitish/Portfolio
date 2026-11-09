@@ -156,7 +156,7 @@ sh(5, 6, COLD, [cap("something *WORSE*", S(5, .4), S(6, -.1), pos="center", size
                 cap("truly *EQUAL*?", S(6, 1.2), size=60)], cam(1, 1.1, 960, 520))
 sh(7, 8, COLD, [doc("THEORY", S(7, .2), 560, 540, 460, 560, "political sense", "not this"), redx(560, 540, S(7, 1.5), 200),
                 svg(fig(1180, 900, 480, "stand"), S(8, 0)), svg(fig(1500, 900, 480, "stand"), S(8, .1)), circle(1340, 600, 330, 330, S(8, .7), "#f2e35b", 5), cap("*ACTUALLY* equal", S(8, .3), size=54)])
-sh(9, 11, COLD, [stack([("NO BOSSES", F(10, .05), None, True), ("NO LANDLORDS", F(10, .35), None, True), ("NO ALGORITHM DECIDING YOUR WORTH", F(10, .62), None, True)], 220, 330, 100, 34),
+sh(9, 11, COLD, [stack([("NO BOSSES", F(10, .05), None, True), ("NO LANDLORDS", F(10, .35), None, True), ("NO ALGORITHM DECIDING YOUR WORTH", F(10, .62), None, True)], 220, 200, 100, 34),
                  cap("No one *ABOVE* you. No one *BELOW* you.", S(9, .2), S(10, -.1), size=48), cap("Just... *EQUAL*.", S(11, .1), size=64, pos="center")])
 sh(12, 12, EARTH, [svg(person_row(300, 330 + r * 62, 20, 52, 17 if r == 4 else None), S(12, 1.4 + 0.45 * r)) for r in range(5)] + [tag("HUMAN HISTORY  -  EACH ICON = 1%", S(12, 1.2), 300, 250, 26),
                    big(97, 1500, 520, S(12, 3.0), 0, "%", "", 150, 1.6), cap("the default. the other *3%* is the world you know.", S(12, 5.0), pos="top", size=44), cap("for *97%* of human history", S(12, 1.0), size=56)], cam(1, 1.06, 960, 520))
@@ -183,7 +183,7 @@ sh(30, 31, EARTH, [svg(sun(1000, 400, 540), 0), svg(hills(800, "#0c0906", 30, 4)
                    {"type": "bracket", "x1": 165, "y1": 640, "x2": 1655, "y2": 640, "t0": S(30, 1.6), "label": "uniform in SIZE"}, cap("wealth didn't *CONCENTRATE*", S(31, .2), size=54)], cam(1, 1.1, 960, 620))
 sh(32, 32, EARTH, [svg(sun(960, 420, 520), 0), svg(hills(840, "#0c0906", 30, 6) + ground(900, "#050403"), 0, .01), svg(fig(780, 890, 420, "stand") + fig(1140, 890, 420, "stand"), S(32, .5)),
                    {"type": "bracket", "x1": 640, "y1": 380, "x2": 1280, "y2": 380, "t0": S(32, 2.2), "label": "= roughly equal status and power"}, cap("men and women *SHARED* power", S(32, .4), size=52)], cam(1, 1.08, 960, 600))
-sh(33, 35, NIGHT, [svg(glow(960, 560, 560, "#ffb85c", .35, "wsp"), 0), svg(fig(960, 890, 460, "stand") + headdress(960, 890, 460), S(33, 1.0)), name("SHAMAN", "the people who understood the invisible world", 960, 960, S(33, 2.0), 640),
+sh(33, 35, NIGHT, [svg(glow(960, 560, 560, "#ffb85c", .35, "wsp"), 0), svg(fig(960, 890, 460, "stand") + headdress(960, 890, 460), S(33, 1.0)), name("SHAMAN", "the people who understood the invisible world", 1480, 520, S(33, 2.0), 640),
                    pill("WARRIORS", 200, 380, S(34, .2), None, "red", 30), pill("CEOs", 200, 470, S(34, 1.0), None, "red", 30), pill("INFLUENCERS", 200, 560, S(34, 1.7), None, "red", 30),
                    cap("elevated status? *SPIRITUAL LEADERS*", S(33, .3), S(34, -.1), size=48), cap("the *INVISIBLE* world", S(35, .2), size=56)], cam(1, 1.12, 960, 560), vignette=0.85)
 sh(36, 38, EARTH, [svg(sun(1000, 440, 520), 0), svg(hills(830, "#0c0906", 35, 8) + ground(895, "#050403"), 0, .01), svg(fig(560, 890, 430, "carry"), S(36, 2)), big(47, 1220, 470, S(38, .5), 0, "", "", 230, 1.4),
